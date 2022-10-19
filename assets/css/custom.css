@@ -1,0 +1,20 @@
+/*
+Custom Css
+*/
+
+.hideContent {
+    overflow: hidden;
+    line-height: 3em;
+    height: 2em;
+}
+
+.showContent {
+    line-height: 1em;
+    height: auto;
+}
+ .card-text{
+    font-size:19px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
