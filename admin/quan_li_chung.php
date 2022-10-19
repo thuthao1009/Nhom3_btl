@@ -108,7 +108,7 @@
                             </a>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
-                                Quản trị bán hàng hóa
+                                Quản trị bán 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
@@ -292,3 +292,4 @@
     </body>
 </html>
 
+<td><?php  echo "<img src='../img/".$row["sp_anh_minh_hoa"]."' ><br>"  ;?></td>

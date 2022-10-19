@@ -9,7 +9,7 @@
 
 	// Thực hiện xoá dữ liệu
 	mysqli_query($con, $sql);
-echo ($sql);exit();
+//echo ($sql);exit();
 	// Thực hiện thông báo cho mọi người biết các bạn xoá thành công
 ;?>
 <script type="text/javascript">

@@ -117,6 +117,9 @@
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Quản trị sản phẩm</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.php">Bảng điều khiển</a></li>
+                        </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -127,35 +130,33 @@
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Danh mục</th>
-                                            <th>Thể loại</th>
-                                            <th>Mô tả</th>
-                                            <th>Đơn giá</th>
-                                            <th>Tình trạng</th>
-                                            <th>Năm xuất bản</th>
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Mã Danh Mục</th>
+                                            <th>Mã Thể Loại</th>
+                                            <th>Ảnh Minh Họa</th>
+                                            <th>Mô Tả</th>
                                             <th>Số lượng</th>
-            
+                                            <th>Mã người dùng</th>
                                             <th>Xóa</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
+                                        <tr>
                                         <th>STT</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Danh mục</th>
-                                            <th>Thể loại</th>
-                                            <th>Mô tả</th>
-                                            <th>Đơn giá</th>
-                                            <th>Tình trạng</th>
-                                            <th>Năm xuất bản</th>
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Mã Danh Mục</th>
+                                            <th>Mã Thể Loại</th>
+                                            <th>Ảnh Minh Họa</th>
+                                            <th>Mô Tả</th>
                                             <th>Số lượng</th>
-                                            
+                                            <th>Mã người dùng</th>
                                             <th>Xóa</th>
+                                        </tr>
                                     </tfoot>
                                     <tbody>
                                     <?php
                                         // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
-                                        require("../config.php");
+                                        include("../config.php");
  
                                         // 2. Viết câu lệnh truy vấn để lấy ra dữ liệu mong muốn (TIN TỨC đã lưu trong CSDL)
                                         $sql = "
@@ -175,13 +176,11 @@
                                             <td><?php echo $row["sp_tensp"];?></td>
                                             <td><?php echo $row["dm_id"];?></td>
                                             <td><?php echo $row["tl_id"];?></td>
+                                            <td style="text-align: center;"><img src="../img/<?php echo $row['sp_anh_minh_hoa'] ?>" width="50" height="30" /></td>
                                             <td><?php echo $row["sp_mo_ta"];?></td>
-                                            <td><?php echo $row["sp_gia"];?></td>
-                                            <td><?php echo $row["sp_tinh_trang"];?></td>
-                                            <td><?php echo $row["sp_namxb"];?></td>
                                             <td><?php echo $row["sp_soluong"];?></td>
-                                
-                                            <td style="text-align: center;"><a href="../Admin/xoa_san_pham.php?id=<?php echo $row["sp_id"];?>"><img src= "../Image/mis.jpg" style="width: 30px; height: auto;"></a></td>
+                                            <td><?php echo $row["user_id"];?></td>
+                                            <td style="text-align: center;"><a href="../admin/xoa_san_pham.php?id=<?php echo $row["sp_id"];?>"><img src= "../img/delete.png" style="width: 30px; height: auto;"></a></td>
                                         </tr>
                                     <?php
                                         }
