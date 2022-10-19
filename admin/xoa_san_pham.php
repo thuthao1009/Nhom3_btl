@@ -14,6 +14,6 @@
 ;?>
 <script type="text/javascript">
 	window.alert("Xoá dữ liệu thành công!");
-	window.location.href = "../Admin/quan_tri_san_pham.php";
+	window.location.href = "../admin/quan_tri_san_pham.php";
 </script>
 
