@@ -28,14 +28,15 @@
     $id=$_GET['id'];
     require('config.php');
     require('menu.php');
-    $sql="SELECT * FROM sanpham WHERE sp_id=".$id;
+    
+    $sql = "SELECT * FROM `sanpham` JOIN theloai ON sanpham.tl_id=theloai.tl_id JOIN danhmucsp ON `danhmucsp`.`dm_id`=  `sanpham`.`dm_id`   WHERE sanpham.sp_id=".$id;
     $san_pham=mysqli_query($con,$sql);
     $row=mysqli_fetch_array($san_pham);
     ?>
     <!-- Open Content -->
     <section class="bg-light">
         <div class="container pb-5">
-            <div class="row">
+            <div class="row" >
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
                         <img class="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">
@@ -136,7 +137,7 @@
                 <!-- col end -->
                 <div class="col-lg-7 mt-5">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" >
                             <h1 class="h2"><?php echo $row['sp_tensp'] ?></h1>
                             <p class="h3 py-2"><?php echo $row['sp_gia']  ?></p>
                             <ul class="list-inline">
@@ -144,32 +145,29 @@
                                     <h6>Môn học:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Thể loại</strong></p>
+                                    <p class="text-muted"><?php echo $row['tl_ten_tl']  ?></p>
                                 </li>
                             </ul>
-
-                            <h6>Mô tả</h6>
-                            <p><?php echo $row['sp_mo_ta']  ?></p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Tình trạng:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>White / Black</strong></p>
+                                    <p class=""><strong><?php echo $row['sp_tinh_trang']  ?></strong></p>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Năm xuất bản:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class=""><strong><?php echo $row['sp_namxb']  ?></strong></p>
                                 </li>
                             </ul>
 
-                            <h6>Specification:</h6>
-                            <ul class="list-unstyled pb-3">
-                                <li>Lorem ipsum dolor sit</li>
-                                <li>Amet, consectetur</li>
-                                <li>Adipiscing elit,set</li>
-                                <li>Duis aute irure</li>
-                                <li>Ut enim ad minim</li>
-                                <li>Dolore magna aliqua</li>
-                                <li>Excepteur sint</li>
-                            </ul>
-
+                            <h6>Mô tả</h6>
+                            <p><?php echo $row['sp_mo_ta']  ?></p>
+                            
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
