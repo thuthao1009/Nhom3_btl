@@ -37,7 +37,7 @@
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
                 </div>
-            </form>
+            </form>-->
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
@@ -116,29 +116,29 @@
         <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Quản trị danh mục sản phẩm</h1>
+                        <h1 class="mt-4">Quản trị thể loại sách</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">Bảng điều khiển</a></li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Danh mục sản phẩm| <a href="./them_moi_danh_muc.php">Thêm mới</a>
+                                Danh sách thể loại| <a href="./them_moi_the_loai.php">Thêm mới</a>
                             </div>
                             <div class="card-body">
                                 <table  id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th style="text-align:center;">STT</th>
-                                            <th style="text-align:center;">Tên danh mục</th>
+                                            <th style="text-align:center;">Tên thể loại</th>
                                             <th style="text-align:center;">Sửa</th>
                                             <th style="text-align:center;">Xóa</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>STT</th>
-                                            <th style="text-align:center;">Tên danh mục</th>
+                                         <th style="text-align:center;">STT</th>
+                                            <th style="text-align:center;">Tên thể loại</th>
                                             <th style="text-align:center;">Sửa</th>
                                             <th style="text-align:center;">Xóa</th>
                                         </tr>
@@ -151,22 +151,22 @@
                                         // 2. Viết câu lệnh truy vấn để lấy ra dữ liệu mong muốn (TIN TỨC đã lưu trong CSDL)
                                         $sql = "
                                                   SELECT *
-                                                  FROM danhmucsp
-                                                  ORDER BY dm_id  DESC 
+                                                  FROM theloai
+                                                  ORDER BY tl_id  DESC 
                                         ";
                                         // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
-                                        $danh_muc = mysqli_query($con, $sql);
+                                        $the_loai = mysqli_query($con, $sql);
                                         // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy
                                         $i=0;
-                                        while ($row = mysqli_fetch_array($danh_muc)) {
+                                        while ($row = mysqli_fetch_array($the_loai)) {
                                             $i++;
                                     ;?>
                                         <tr>
                                             <td style="text-align:center;"><?php echo $i;?></td>
-                                            <td style="text-align:center;"><?php echo $row["dm_ten_danh_muc"];?></td>
-                                            <td style="text-align: center;"><a href="../admin/sua_danh_muc.php?id=<?php echo $row["dm_id"];?>"><img src= "../img/edit.png" style="width: 30px; height: auto;"></a></td>
+                                            <td style="text-align:center;"><?php echo $row["tl_ten_tl"];?></td>
+                                            <td style="text-align: center;"><a href="../admin/sua_the_loai.php?id=<?php echo $row["tl_id"];?>"><img src= "../img/edit.png" style="width: 30px; height: auto;"></a></td>
 
-                                            <td style="text-align: center;"><a href="../admin/xoa_danh_muc.php?id=<?php echo $row["dm_id"];?>"><img src= "../img/delete.png" style="width: 30px; height: auto;"></a></td>
+                                            <td style="text-align: center;"><a href="../admin/xoa_the_loai.php?id=<?php echo $row["tl_id"];?>"><img src= "../img/delete.png" style="width: 30px; height: auto;"></a></td>
                                         </tr>
                                     <?php
                                         }

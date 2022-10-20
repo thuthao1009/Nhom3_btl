@@ -34,14 +34,13 @@
                 
         mysqli_query($con, $sql);
 //echo ($sql); exit();
-        #Thông báo đã chèn DL thành công, điều hướng về trang Quản trị tin tức
-        echo "
-            <script type = 'text/javascript'>
-                window.alert('Đã cập nhật trạng thái xử lý liên hệ thành công');
-                window.location.href = 'quan_tri_lien_he.php';
-            </script>
-        ";
+        
     ?>
+    <script type="text/javascript">
+    window.alert("Cập nhật trạng thái xử lí liên hệ thành công!");
+    window.location.href = "../admin/quan_tri_lien_he.php";
+
+</script>
 </body>
 
 </html>

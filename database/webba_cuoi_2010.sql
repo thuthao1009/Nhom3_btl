@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2022 at 07:05 PM
+-- Generation Time: Oct 20, 2022 at 06:32 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -62,8 +62,7 @@ INSERT INTO `danhmucsp` (`dm_id`, `dm_ten_danh_muc`) VALUES
 (1, 'Tài liệu môn học'),
 (2, 'Tiểu luận'),
 (3, 'Ngiên cứu khoa học'),
-(4, 'Sách bài tập'),
-(8, 'Slide 2');
+(4, 'Sách bài tập');
 
 -- --------------------------------------------------------
 
@@ -105,8 +104,8 @@ CREATE TABLE `hoadonchitiet` (
 --
 
 INSERT INTO `hoadonchitiet` (`hd_id`, `sp_id`, `gia`, `cthd_soluong`, `cthd_tongtien`) VALUES
-(1, 1, 30000, 1, 30000),
-(1, 2, 20000, 1, 20000);
+(1, 2, 30000, 1, 30000),
+(1, 2, 20000, 1, 30000);
 
 -- --------------------------------------------------------
 
@@ -130,7 +129,7 @@ CREATE TABLE `lienhe` (
 
 INSERT INTO `lienhe` (`lh_id`, `lh_hoten`, `lh_email`, `lh_tieude`, `lh_noidung`, `lh_created_at`, `lh_trang_thai`) VALUES
 (1, 'Lê Văn D', 'levand@gmail.com', 'Tôi muốn trả hàng', 'Hàng không đúng hình ảnh', '2022-10-08 16:52:10', 0),
-(2, 'le van a', 'levana@gmail.com', 'trả sách', 'trả sách lần 3', '2022-10-19 15:53:38', 0),
+(2, 'le van a', 'levana@gmail.com', 'trả sách', 'trả sách lần 3', '2022-10-19 15:53:38', 1),
 (3, 'nguyen van a', 'a@gmail.com', 'd', 'd', '2022-10-19 15:56:07', 0);
 
 -- --------------------------------------------------------
@@ -160,9 +159,7 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`sp_id`, `dm_id`, `tl_id`, `sp_tensp`, `sp_anh_minh_hoa`, `sp_gia`, `sp_mo_ta`, `sp_tinh_trang`, `sp_namxb`, `sp_soluong`, `so_luot_xem`, `user_id`, `created_at`) VALUES
-(1, 1, 1, 'Hệ thống văn bản quy phạm pháp luật', NULL, 30000, NULL, 'Mới', 2021, 2, 1, 1, '2022-10-11 22:26:51'),
-(2, 1, 2, 'Bài tập tư tưởng Hồ Chí Minh', NULL, 20000, NULL, NULL, 2021, 1, 1, 1, '2022-10-11 22:26:51'),
-(4, 2, 4, 'Hệ thống ngân hàng', 'add.png', 30000, NULL, NULL, 2021, 1, 1, 1, '2022-10-11 22:26:51');
+(2, 1, 2, 'Bài tập tư tưởng Hồ Chí Minh', NULL, 20000, NULL, NULL, 2021, 1, 1, 1, '2022-10-11 22:26:51');
 
 -- --------------------------------------------------------
 
@@ -265,15 +262,14 @@ ALTER TABLE `danhmucsp`
 --
 ALTER TABLE `hoadon`
   ADD PRIMARY KEY (`hd_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `hoadon_ibfk_1` (`user_id`);
 
 --
 -- Indexes for table `hoadonchitiet`
 --
 ALTER TABLE `hoadonchitiet`
-  ADD PRIMARY KEY (`hd_id`,`sp_id`),
-  ADD KEY `sp_id` (`sp_id`),
-  ADD KEY `hd_id` (`hd_id`);
+  ADD KEY `hoadonchitiet_ibfk_1` (`hd_id`),
+  ADD KEY `hoadonchitiet_ibfk_2` (`sp_id`);
 
 --
 -- Indexes for table `lienhe`
@@ -286,9 +282,9 @@ ALTER TABLE `lienhe`
 --
 ALTER TABLE `sanpham`
   ADD PRIMARY KEY (`sp_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `dm_id` (`dm_id`),
-  ADD KEY `tl_id` (`tl_id`);
+  ADD KEY `sanpham_ibfk_1` (`user_id`),
+  ADD KEY `sanpham_ibfk_2` (`dm_id`),
+  ADD KEY `sanpham_ibfk_3` (`tl_id`);
 
 --
 -- Indexes for table `theloai`
@@ -301,14 +297,14 @@ ALTER TABLE `theloai`
 --
 ALTER TABLE `thumucanh`
   ADD PRIMARY KEY (`tma_id`),
-  ADD KEY `sp_id` (`sp_id`);
+  ADD KEY `thumucanh_ibfk_1` (`sp_id`);
 
 --
 -- Indexes for table `tintuc`
 --
 ALTER TABLE `tintuc`
   ADD PRIMARY KEY (`tt_id`),
-  ADD KEY `ad_id` (`ad_id`);
+  ADD KEY `tintuc_ibfk_1` (`ad_id`);
 
 --
 -- Indexes for table `user`
@@ -348,7 +344,7 @@ ALTER TABLE `lienhe`
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `sp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `sp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `theloai`
@@ -382,34 +378,34 @@ ALTER TABLE `user`
 -- Constraints for table `hoadon`
 --
 ALTER TABLE `hoadon`
-  ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `hoadonchitiet`
 --
 ALTER TABLE `hoadonchitiet`
-  ADD CONSTRAINT `hoadonchitiet_ibfk_1` FOREIGN KEY (`hd_id`) REFERENCES `hoadon` (`hd_id`),
-  ADD CONSTRAINT `hoadonchitiet_ibfk_2` FOREIGN KEY (`sp_id`) REFERENCES `sanpham` (`sp_id`);
+  ADD CONSTRAINT `hoadonchitiet_ibfk_1` FOREIGN KEY (`hd_id`) REFERENCES `hoadon` (`hd_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hoadonchitiet_ibfk_2` FOREIGN KEY (`sp_id`) REFERENCES `sanpham` (`sp_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `sanpham_ibfk_2` FOREIGN KEY (`dm_id`) REFERENCES `danhmucsp` (`dm_id`),
-  ADD CONSTRAINT `sanpham_ibfk_3` FOREIGN KEY (`tl_id`) REFERENCES `theloai` (`tl_id`);
+  ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sanpham_ibfk_2` FOREIGN KEY (`dm_id`) REFERENCES `danhmucsp` (`dm_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sanpham_ibfk_3` FOREIGN KEY (`tl_id`) REFERENCES `theloai` (`tl_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `thumucanh`
 --
 ALTER TABLE `thumucanh`
-  ADD CONSTRAINT `thumucanh_ibfk_1` FOREIGN KEY (`sp_id`) REFERENCES `sanpham` (`sp_id`);
+  ADD CONSTRAINT `thumucanh_ibfk_1` FOREIGN KEY (`sp_id`) REFERENCES `sanpham` (`sp_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tintuc`
 --
 ALTER TABLE `tintuc`
-  ADD CONSTRAINT `tintuc_ibfk_1` FOREIGN KEY (`ad_id`) REFERENCES `admin` (`ad_id`);
+  ADD CONSTRAINT `tintuc_ibfk_1` FOREIGN KEY (`ad_id`) REFERENCES `admin` (`ad_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

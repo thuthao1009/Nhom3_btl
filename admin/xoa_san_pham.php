@@ -5,7 +5,8 @@
 	require('../config.php');
 
 	// Truy vấn đến bảng dữ liệu
-	$sql="DELETE FROM sanpham WHERE sp_id=".$id;
+	$sql="DELETE FROM sanpham WHERE `sanpham`.`sp_id` = '".$id."';
+     ";
 
 	// Thực hiện xoá dữ liệu
 	mysqli_query($con, $sql);
