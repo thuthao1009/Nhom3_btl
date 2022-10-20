@@ -116,38 +116,40 @@
         <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Quản trị liên hệ</h1>
+                        <h1 class="mt-4">Quản trị sản phẩm</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">Bảng điều khiển</a></li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Danh sách sản phẩm
+                                Danh sách hóa đơn|<a href="chi_tiet_hoa_don.php">Chi tiết hóa đơn</a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                            <th>Họ tên</th>
-                                            <th>Email</th>
-                                            <th>Tiêu đề</th>
-                                            <th>Nội dung</th>
-                                            <th>Ngày tạo</th>
-                                            <th>Trạng thái</th>
-                                            
+                                            <th>Mã hóa đơn</th>
+                                           <!-- <th>ID người bán</th>-->
+                                            <th>ID người mua</th>
+                                            <th>Ngày đặt hàng</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Xem chi tiết</th>
+                                            <th>Xóa</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                         <th>STT</th>
-                                            <th>Họ tên</th>
-                                            <th>Email</th>
-                                            <th>Tiêu đề</th>
-                                            <th>Nội dung</th>
-                                            <th>Ngày tạo</th>
-                                            <th>Trạng thái</th>
+                                            <th>STT</th>
+                                            <th>Mã hóa đơn</th>
+                                         <!--   <th>ID người bán</th>-->
+                                            <th>ID người mua</th>
+                                            <th>Ngày đặt hàng</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Xem chi tiết</th>
+                                            <th>Xóa</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -157,31 +159,28 @@
  
                                         // 2. Viết câu lệnh truy vấn để lấy ra dữ liệu mong muốn (TIN TỨC đã lưu trong CSDL)
                                         $sql = "
-                                                  SELECT *
-                                                  FROM lienhe
-                                                  ORDER BY lh_id  DESC 
+                                                  SELECT * from hoadon
+                                                  ORDER BY hd_id  DESC 
                                         ";
+
+
+
                                         // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
-                                        $lien_he = mysqli_query($con, $sql);
+                                        $hoa_don = mysqli_query($con, $sql);
+
                                         // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy
                                         $i=0;
-                                        while ($row = mysqli_fetch_array($lien_he)) {
+                                        while ($row = mysqli_fetch_array($hoa_don)) {
                                             $i++;
                                     ;?>
                                         <tr>
                                             <td><?php echo $i;?></td>
-                                            <td><?php echo $row["lh_hoten"];?></td>
-                                            <td><?php echo $row["lh_email"];?></td>
-                                            <td><?php echo $row["lh_tieude"];?></td>
-                                            <td><?php echo $row["lh_noidung"];?></td>
-                                            <td><?php echo $row["lh_created_at"];?></td>
-                                            
-                                            <td>
-                                                    <select name="select-status" class="select-status" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                                                        <option value="lien_he_sua_trang_thai.php?id=<?php echo $row['lh_id'] ?>&&status=1" <?php if($row["lh_trang_thai"]==1) echo "selected"; ?>>Đã xử lý</option>
-                                                        <option value="lien_he_sua_trang_thai.php?id=<?php echo $row['lh_id'] ?>&&status=0" <?php if($row["lh_trang_thai"]==0) echo "selected"; ?>>Chưa xử lý</option>
-                                                    </select>
-                                                </td>
+                                            <td><?php echo $row["hd_id"];?></td>
+                                            <td><?php echo $row["user_id"];?></td>
+                                            <td><?php echo $row["hd_ngay_dat_hang"];?></td>
+                                            <td><?php echo $row["hd_ngay_dat_hang"];?></td>
+                                            <td><a href="chi_tiet_hoa_don.php?id=<?php echo $row["hd_id"];?>">Xem chi tiết</a></td>
+                                            <td style="text-align: center;"><a href="../admin/xoa_hoa_don.php?id=<?php echo $row["hd_id"];?>"><img src= "../img/delete.png" style="width: 30px; height: auto;"></a></td>
                                         </tr>
                                     <?php
                                         }

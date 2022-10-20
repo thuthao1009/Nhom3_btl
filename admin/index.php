@@ -127,7 +127,7 @@
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Sách</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Chi tiết</a>
+                                        <a class="small text-white stretched-link" href="quan_tri_san_pham.php">Chi tiết</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Danh mục</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Chi tiết</a>
+                                        <a class="small text-white stretched-link" href="quan_tri_danh_muc">Chi tiết</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Thể loại</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Chi tiết</a>
+                                        <a class="small text-white stretched-link" href="quan_tri_the_loai.php">Chi tiết</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Hóa đơn bán hàng</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">Chi tiết</a>
+                                        <a class="small text-white stretched-link" href="quan_tri_hoa_don.php">Chi tiết</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
