@@ -116,14 +116,14 @@
         <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Quản trị sản phẩm</h1>
+                        <h1 class="mt-4">Quản trị hóa đơn</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">Bảng điều khiển</a></li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Danh sách hóa đơn|<a href="chi_tiet_hoa_don.php">Chi tiết hóa đơn</a>
+                                <a href="quan_tri_hoa_don.php">Danh sách hóa đơn</a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -131,7 +131,7 @@
                                         <tr>
                                             <th>STT</th>
                                             <th>Mã hóa đơn</th>
-                                           <!-- <th>ID người bán</th>-->
+                                            <th>ID người bán</th>
                                             <th>ID người mua</th>
                                             <th>Ngày đặt hàng</th>
                                             <th>Tổng tiền</th>
@@ -144,7 +144,7 @@
                                         <th>STT</th>
                                             <th>STT</th>
                                             <th>Mã hóa đơn</th>
-                                         <!--   <th>ID người bán</th>-->
+                                          <th>ID người bán</th>
                                             <th>ID người mua</th>
                                             <th>Ngày đặt hàng</th>
                                             <th>Tổng tiền</th>
@@ -176,9 +176,10 @@
                                         <tr>
                                             <td><?php echo $i;?></td>
                                             <td><?php echo $row["hd_id"];?></td>
-                                            <td><?php echo $row["user_id"];?></td>
+                                            <td><?php echo $row["user_id_b"];?></td>
+                                            <td><?php echo $row["user_id_m"];?></td>
                                             <td><?php echo $row["hd_ngay_dat_hang"];?></td>
-                                            <td><?php echo $row["hd_ngay_dat_hang"];?></td>
+                                            <td><?php echo $row["tong_tien"];?></td>
                                             <td><a href="chi_tiet_hoa_don.php?id=<?php echo $row["hd_id"];?>">Xem chi tiết</a></td>
                                             <td style="text-align: center;"><a href="../admin/xoa_hoa_don.php?id=<?php echo $row["hd_id"];?>"><img src= "../img/delete.png" style="width: 30px; height: auto;"></a></td>
                                         </tr>

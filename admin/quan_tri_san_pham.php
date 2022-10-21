@@ -137,7 +137,7 @@
                                             <th>Ảnh Minh Họa</th>
                                             <th>Mô Tả</th>
                                             <th>Số lượng</th>
-                                            <th>Mã người dùng</th>
+                                            <th>Mã người bán</th>
                                             <th>Xóa</th>
                                         </tr>
                                     </thead>
@@ -151,7 +151,7 @@
                                             <th>Ảnh Minh Họa</th>
                                             <th>Mô Tả</th>
                                             <th>Số lượng</th>
-                                            <th>Mã người dùng</th>
+                                            <th>Mã người bán</th>
                                             <th>Xóa</th>
                                         </tr>
                                     </tfoot>
@@ -182,7 +182,7 @@
                                             <td style="text-align: center;"><img src="../img/<?php echo $row['sp_anh_minh_hoa'] ?>" width="50" height="30" /></td>
                                             <td><?php echo $row["sp_mo_ta"];?></td>
                                             <td><?php echo $row["sp_soluong"];?></td>
-                                            <td><?php echo $row["user_id"];?></td>
+                                            <td><?php echo $row["user_id_b"];?></td>
                                             <td style="text-align: center;"><a href="../admin/xoa_san_pham.php?id=<?php echo $row["sp_id"];?>"><img src= "../img/delete.png" style="width: 30px; height: auto;"></a></td>
                                         </tr>
                                     <?php
