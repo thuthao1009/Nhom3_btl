@@ -5,7 +5,8 @@
 	require('../config.php');
 
 	// Truy vấn đến bảng dữ liệu
-	$sql="DELETE FROM sanpham WHERE sp_id=".$id;
+	$sql="DELETE FROM sanpham WHERE `sanpham`.`sp_id` = '".$id."';
+     ";
 
 	// Thực hiện xoá dữ liệu
 	mysqli_query($con, $sql);
@@ -14,6 +15,6 @@
 ;?>
 <script type="text/javascript">
 	window.alert("Xoá dữ liệu thành công!");
-	window.location.href = "../Admin/quan_tri_san_pham.php";
+	window.location.href = "../admin/quan_tri_san_pham.php";
 </script>
 

@@ -119,12 +119,12 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Thêm Mới Danh Mục</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Thêm Mới Thể Loại</h3></div>
                                     <div class="card-body">
-                                        <form method="POST" action="thuc_hien_them_moi_danh_muc.php" enctype="multipart/form-data">
+                                        <form method="POST" action="thuc_hien_them_moi_the_loai.php" enctype="multipart/form-data">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="txtTenDanhMuc" type="text" placeholder="Tên danh mục" name="txtTenDanhMuc" />
-                                                <label for="txtTenDanhMuc">Tên Danh mục</label>
+                                                <input class="form-control" id="txtTenTheLoai" type="text" placeholder="Tên thể loại" name="txtTenTheLoai" />
+                                                <label for="txtTenTheLoai">Tên Thể Loại</label>
                                             </div>                                                                                    
                                             <div class="mt-4 mb-0">                                           
                                                 <input type="hidden" name="txtID" >

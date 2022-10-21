@@ -20,33 +20,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Thêm mới danh mục</title>
+        <title>Sửa thể loại</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
     <?php
-            // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
-            include("../config.php");
-            
-             // 2. Viết câu lệnh truy vấn để thêm mới dữ liệu vào bảng TIN TỨC trong CSDL
-            $ma_dm = $_POST['txtID'];
-            $ten_danh_muc= $_POST['txtTenDanhMuc'];
-            
-            $sql =  "INSERT INTO `danhmuc` (`dm_id`, `dm_ten_danh_muc`) 
-            VALUES (NULL, '".$ten_danh_muc."');";
-            // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
-            $loai_san_pham= mysqli_query($con, $sql);
-            //4. Thông báo chèn dữ liệu thành công và đẩy các bạn về trang Quản trị sp
-            echo "
-                <script type='text/javascript'>
-                    window.alert('Bạn đã thêm mới loại sản phẩm thành công');
-                    window.location.href='quan_tri_danh_muc.php';
-                </script>
-            ";
- 
-        ;?>
- 
-    </body>
-</html>
+    // Lấy các dữ liệu được chuyển sang
+    $id = $_POST['txtID'];
+    $ten_tl=$_POST['txtTenTheLoai'];
+
+    $sql="
+        UPDATE `theloai` 
+        SET `tl_ten_tl` = '".$ten_tl."'
+         WHERE `theloai`.`tl_id` = '".$id."'
+    ";
+    
+    // echo $sql; exit();
+
+    // Kết nối đến CSDL
+    require('../config.php');
+
+    // Truy vấn đến bảng dữ liệu
+
+    // Thực hiện thêm mới dữ liệu
+    mysqli_query($con, $sql);
+
+    // Thực hiện thông báo cho mọi người biết các bạn thêm mới thành công
+;?>
+<script type="text/javascript">
+    window.alert("Cập nhật dữ liệu thành công!");
+    window.location.href = "../admin/quan_tri_the_loai.php";
+</script>

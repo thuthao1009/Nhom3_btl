@@ -130,6 +130,7 @@
                                     <thead>
                                         <tr>
                                             <th>STT</th>
+                                             <th>Mã sản phẩm</th>
                                             <th>Tên Sản Phẩm</th>
                                             <th>Mã Danh Mục</th>
                                             <th>Mã Thể Loại</th>
@@ -144,6 +145,7 @@
                                         <tr>
                                         <th>STT</th>
                                             <th>Tên Sản Phẩm</th>
+                                            <th>Mã sản phẩm</th>
                                             <th>Mã Danh Mục</th>
                                             <th>Mã Thể Loại</th>
                                             <th>Ảnh Minh Họa</th>
@@ -173,6 +175,7 @@
                                     ;?>
                                         <tr>
                                             <td><?php echo $i;?></td>
+                                            <td><?php echo $row["sp_id"];?></td>
                                             <td><?php echo $row["sp_tensp"];?></td>
                                             <td><?php echo $row["dm_id"];?></td>
                                             <td><?php echo $row["tl_id"];?></td>

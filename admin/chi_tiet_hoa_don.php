@@ -1,17 +1,17 @@
 <?php 
+/*
     // Mục đích: kiểm tra xem bạn có quyền truy cập trang này hay không thông qua biến $_SESSION['da_dang_nhap'] = 1 --> được phép truy cập; và ngược lại.
- /*   session_start();
-
+     session_start();
+     ob_start();
     if(!isset($_SESSION['da_dang_nhap'])) {
         echo "
             <script type='text/javascript'>
                 window.alert('Bạn không được phép truy cập');
-                window.location.href='dangnhap.php';
+                window.location.href='dang_nhap.php';
             </script>
         ";
     }*/
-;?>
-
+;?> 
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -113,32 +113,83 @@
                     </div>
                 </nav>
             </div>
-            <div id="layoutSidenav_content">         
-            <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Thêm Mới Danh Mục</h3></div>
-                                    <div class="card-body">
-                                        <form method="POST" action="thuc_hien_them_moi_danh_muc.php" enctype="multipart/form-data">
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="txtTenDanhMuc" type="text" placeholder="Tên danh mục" name="txtTenDanhMuc" />
-                                                <label for="txtTenDanhMuc">Tên Danh mục</label>
-                                            </div>                                                                                    
-                                            <div class="mt-4 mb-0">                                           
-                                                <input type="hidden" name="txtID" >
-                                                <input type="submit" name="btnSubmit" value="Cập nhật">
-                                              
-                                        </form>
-                                    </div>
-                                </div>
+        <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Quản trị sản phẩm</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.php">Bảng điều khiển</a></li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Danh sách hóa đơn|<a href="chi_tiet_hoa_don.php">Chi tiết hóa đơn</a>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Mã hóa đơn</th>
+                                           <!-- <th>ID người bán</th>-->
+                                            <th>Mã sản phẩm</th>
+                                            <th>Đơn giá</th>
+                                            <th>Số lượng </th>
+                                            <th>Thành tiền</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                        <th>STT</th>
+                                            <th>Mã hóa đơn</th>
+                                           <!-- <th>ID người bán</th>-->
+                                            <th>Mã sản phẩm</th>
+                                            <th>Đơn giá</th>
+                                            <th>Số lượng </th>
+                                            <th>Thành tiền</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <?php
+                                        // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
+                                        include("../config.php");
+ 
+                                        // 2. Viết câu lệnh truy vấn để lấy ra dữ liệu mong muốn (TIN TỨC đã lưu trong CSDL)
+                                        $sql = "
+                                                  SELECT *
+                                                  FROM hoadonchitiet, sanpham WHERE hoadonchitiet.sp_id=sanpham.sp_id and hoadonchitiet.hd_id= '$_GET[id]'
+                                                  ORDER BY hd_id  DESC 
+                                        ";
+
+                                      //  echo($sql); exit();
+                                        // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
+                                        $chi_tiet_hoa_don = mysqli_query($con, $sql);
+                                        // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy
+                                        $i=0;
+
+                                        while ($row = mysqli_fetch_array($chi_tiet_hoa_don)) {
+                                            $i++;
+                                            $thanh_tien= $row["sp_gia"]* $row["cthd_soluong"];
+                                    ;?>
+                                        <tr>
+                                            <td><?php echo $i;?></td>
+                                            <td><?php echo $row["hd_id"];?></td>
+                                            <td><?php echo $row["sp_id"];?></td>
+                                            <td><?php echo $row["sp_gia"];?></td>
+                                            <td><?php echo $row["cthd_soluong"];?></td>
+                                            <td><?php echo $thanh_tien;?></td>
+                                        </tr>
+                                    <?php
+                                        }
+                                    ;?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                  
                 </main>
-                <footer class="py-4 bg-light mt-auto">
+                <footer  class="py-4 bg-light mt-auto" >
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Bản Quyền &copy; Trang Web của bạn 2022</div>
@@ -161,4 +212,3 @@
         <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>
-

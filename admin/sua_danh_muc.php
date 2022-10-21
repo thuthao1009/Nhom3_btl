@@ -113,6 +113,25 @@
                     </div>
                 </nav>
             </div>
+
+            <?php
+             // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
+             include("../config.php");
+             // 2. Viết câu lệnh truy vấn để lấy ra dữ liệu mong muốn (TIN TỨC đã lưu trong CSDL)
+             $ma_danh_muc = $_GET["id"];
+             $sql = "
+                       SELECT *
+                       FROM danhmucsp
+                       WHERE dm_id = '".$ma_danh_muc."'  ;
+             ";
+ 
+             // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
+             $danh_muc= mysqli_query($con, $sql);
+ 
+                // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy
+                $row = mysqli_fetch_array($danh_muc);
+            ;?>
+
             <div id="layoutSidenav_content">         
             <main>
                     <div class="container">
@@ -121,13 +140,14 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Thêm Mới Danh Mục</h3></div>
                                     <div class="card-body">
-                                        <form method="POST" action="thuc_hien_them_moi_danh_muc.php" enctype="multipart/form-data">
+                                        <form method="POST" action="thuc_hien_sua_danh_muc.php" enctype="multipart/form-data">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="txtTenDanhMuc" type="text" placeholder="Tên danh mục" name="txtTenDanhMuc" />
-                                                <label for="txtTenDanhMuc">Tên Danh mục</label>
+                                                <input class="form-control" id="txtTenDanhMuc" type="text" placeholder="Tên danh mục" name="txtTenDanhMuc" value=
+                                                "<?php echo $row["dm_ten_danh_muc"];?>"/>
+                                                <label for="txtTenDanhMuc">Tên Danh Mục</label>
                                             </div>                                                                                    
                                             <div class="mt-4 mb-0">                                           
-                                                <input type="hidden" name="txtID" >
+                                                <input type="hidden" name="txtID" value="<?php echo $row["dm_id"] ;?>">
                                                 <input type="submit" name="btnSubmit" value="Cập nhật">
                                               
                                         </form>
