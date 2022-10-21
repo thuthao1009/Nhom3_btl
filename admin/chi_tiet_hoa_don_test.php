@@ -116,14 +116,14 @@
         <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Quản trị hóa đơn</h1>
+                        <h1 class="mt-4">Quản trị sản phẩm</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">Bảng điều khiển</a></li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                <a href="quan_tri_hoa_don.php">Danh sách hóa đơn</a>
+                                Danh sách hóa đơn|<a href="chi_tiet_hoa_don.php">Chi tiết hóa đơn</a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -131,23 +131,25 @@
                                         <tr>
                                             <th>STT</th>
                                             <th>Mã hóa đơn</th>
-                                           <!-- <th>ID người bán</th>-->
-                                            <th>Mã sản phẩm</th>
-                                            <th>Đơn giá</th>
-                                            <th>Số lượng </th>
-                                            <th>Thành tiền</th>
-                                            
+                                      
+                                            <th>ID người mua</th>
+                                            <th>Ngày đặt hàng</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Xem chi tiết</th>
+                                            <th>Xóa</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>STT</th>
+                                        
+                                            <th>STT</th>
                                             <th>Mã hóa đơn</th>
-                                           <!-- <th>ID người bán</th>-->
-                                            <th>Mã sản phẩm</th>
-                                            <th>Đơn giá</th>
-                                            <th>Số lượng </th>
-                                            <th>Thành tiền</th>
+                                       
+                                            <th>ID người mua</th>
+                                            <th>Ngày đặt hàng</th>
+                                           
+                                            <th>Xem chi tiết</th>
+                                            <th>Xóa</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -157,38 +159,34 @@
  
                                         // 2. Viết câu lệnh truy vấn để lấy ra dữ liệu mong muốn (TIN TỨC đã lưu trong CSDL)
                                         $sql = "
-                                                  SELECT *
-                                                  FROM hoadonchitiet, sanpham WHERE hoadonchitiet.sp_id=sanpham.sp_id and hoadonchitiet.hd_id= '$_GET[id]'
-                                                  ORDER BY hd_id  DESC 
+                                                  SELECT  * from hoadon right join hoadonchitiet on hoadon.hd_id=hoadonchitiet.hd_id where hoadon.hd_id=hoadonchitiet.hd_id
+                                                  ORDER BY hoadon.hd_id  DESC 
                                         ";
 
-                                      //  echo($sql); exit();
+
+
                                         // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
-                                        $chi_tiet_hoa_don = mysqli_query($con, $sql);
+                                        $hoa_don = mysqli_query($con, $sql);
+
                                         // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy
                                         $i=0;
-                                        $tong_tien=0;
-                                        while ($row = mysqli_fetch_array($chi_tiet_hoa_don)) {
+                                        while ($row = mysqli_fetch_array($hoa_don)) {
                                             $i++;
-                                            $thanh_tien= $row["sp_gia"]* $row["cthd_soluong"];
-                                           
                                     ;?>
                                         <tr>
                                             <td><?php echo $i;?></td>
                                             <td><?php echo $row["hd_id"];?></td>
-                                            <td><?php echo $row["sp_id"];?></td>
-                                            <td><?php echo number_format($row["sp_gia"],0,',','.');?></td>
-                                            <td><?php echo $row["cthd_soluong"];?></td>
-                                            <td><?php echo number_format($thanh_tien,0,',','.');?></td>
+                                           
+                                            
+                                           
+                                            <td><a href="chi_tiet_hoa_don.php?id=<?php echo $row["hd_id"];?>">Xem chi tiết</a></td>
+                                            <td style="text-align: center;"><a href="../admin/xoa_hoa_don.php?id=<?php echo $row["hd_id"];?>"><img src= "../img/delete.png" style="width: 30px; height: auto;"></a></td>
                                         </tr>
                                     <?php
                                         }
                                     ;?>
-                                   
                                     </tbody>
-                                     
                                 </table>
-
                             </div>
                         </div>
                     </div>

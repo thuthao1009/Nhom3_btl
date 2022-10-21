@@ -178,8 +178,8 @@
                                             
                                             <td>
                                                     <select name="select-status" class="select-status" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                                                        <option value="lien_he_sua_trang_thai.php?id=<?php echo $row['lh_id'] ?>&&status=1" <?php if($row["lh_trang_thai"]==1) echo "selected"; ?>>Đã xử lý</option>
-                                                        <option value="lien_he_sua_trang_thai.php?id=<?php echo $row['lh_id'] ?>&&status=0" <?php if($row["lh_trang_thai"]==0) echo "selected"; ?>>Chưa xử lý</option>
+                                                        <option value="lien_he_sua_trang_thai.php?id=<?php echo $row['lh_id'] ?>&status=1" <?php if($row["lh_trang_thai"]==1) echo "selected"; ?>>Đã xử lý</option>
+                                                        <option value="lien_he_sua_trang_thai.php?id=<?php echo $row['lh_id'] ?>&status=0" <?php if($row["lh_trang_thai"]==0) echo "selected"; ?>>Chưa xử lý</option>
                                                     </select>
                                                 </td>
                                         </tr>
