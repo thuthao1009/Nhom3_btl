@@ -14,6 +14,6 @@ $(".show-more a").on("click", function() {
         linkText = "Show more";
         $content.switchClass("showContent", "hideContent", 400);
     };
-
     $this.text(linkText);
 });
+
