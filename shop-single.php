@@ -29,7 +29,7 @@
     require('config.php');
     require('menu.php');
     
-    $sql = "SELECT * FROM `sanpham` JOIN theloai ON sanpham.tl_id=theloai.tl_id JOIN danhmucsp ON `danhmucsp`.`dm_id`=  `sanpham`.`dm_id`   WHERE sanpham.sp_id=".$id;
+    $sql = "SELECT * FROM `sanpham` JOIN theloai ON sanpham.tl_id=theloai.tl_id JOIN user ON user.user_id=sanpham.user_id JOIN danhmucsp ON `danhmucsp`.`dm_id`=  `sanpham`.`dm_id`   WHERE sanpham.sp_id=".$id;
     $san_pham=mysqli_query($con,$sql);
     $row=mysqli_fetch_array($san_pham);
     $sql_lq ="SELECT * FROM sanpham WHERE sp_id<>'".$id."' AND tl_id LIKE (SELECT tl_id FROM sanpham WHERE sp_id='".$id."') ORDER BY `sanpham`.`created_at` DESC ";
@@ -84,6 +84,15 @@
 
                             <h1 class="h2"><?php echo $row['sp_tensp'] ?></h1>
                             <p class="h3 py-2"><?php echo $row['sp_gia']  ?></p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6> Người đăng: </h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="nguoi_dang.php?id=<?php echo $row['user_id']?>" class=" text-decoration-none" style=" color: black;"><?php echo $row['user_hoten']  ?></a>
+                                </li>
+                            </ul>
+                        
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Môn học:</h6>
