@@ -1,13 +1,14 @@
 <?php
 	// Lấy các dữ liệu được chuyển sang
-	$user_hoten=$_POST['txtUserHoten'];
-	$password=md5($_POST['txtPassword']);
-
+	$user_hoten=$_POST['txtEmail'];
+	$password=md5($_POST['txtMatkhau']);
+// echo $user_hoten;
+// echo $password; exit();
 	// Kiểm tra xem Username & Password có khớp với thông tin lưu trong CSDL hay không?
 	$sql="
 		SELECT *
 		FROM user
-		WHERE user_hoten='".$user_hoten."' AND password='".$password."'
+		WHERE email='".$user_hoten."' AND password='".$password."'
 	";
 	// echo $sql; exit();
 

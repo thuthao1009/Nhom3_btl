@@ -82,11 +82,11 @@
                     <div class="card">
                         <div class="card-body" >
 
-                            <h1 class="h2"><?php echo $row['sp_tensp'] ?></h1>
-                            <p class="h3 py-2"><?php echo $row['sp_gia']  ?></p>
+                            <h1 class="h2">&nbsp <?php echo $row['sp_tensp'] ?></h1>
+                            <p class="h3 py-2">&nbsp <?php echo $row['sp_gia']  ?></p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6> Người đăng: </h6>
+                                    <h6>&nbsp Người đăng: </h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <a href="nguoi_dang.php?id=<?php echo $row['user_id']?>" class=" text-decoration-none" style=" color: black;"><?php echo $row['user_hoten']  ?></a>
@@ -95,7 +95,7 @@
                         
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Môn học:</h6>
+                                    <h6>&nbsp Môn học:</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class=""><?php echo $row['tl_ten_tl']  ?></p>
@@ -103,7 +103,7 @@
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Tình trạng:</h6>
+                                    <h6>&nbsp Tình trạng:</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class=""><strong><?php echo $row['sp_tinh_trang']  ?></strong></p>
@@ -111,15 +111,15 @@
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Năm xuất bản:</h6>
+                                    <h6>&nbsp Năm xuất bản:</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class=""><strong><?php echo $row['sp_namxb']  ?></strong></p>
                                 </li>
                             </ul>
 
-                            <h6>Mô tả</h6>
-                            <div class="content hideContent text-decoration-none" style="height: 240px;"><?php echo $row['sp_mo_ta']  ?></div>
+                            <h6> &nbsp Mô tả</h6>
+                            <div class="content hideContent text-decoration-none" style="height: 240px;"> &nbsp<?php echo $row['sp_mo_ta']  ?></div>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Còn lại:</h6>
