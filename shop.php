@@ -5,14 +5,11 @@
     <title>Zay Shop - Product Listing Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
-
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
@@ -28,6 +25,10 @@ https://templatemo.com/tm-559-zay-shop
     <?php 
     require('config.php');
     require('menu.php');
+    $tl = isset($_GET['id_tl'])? $_GET['id_tl'] : '';
+    $dm = isset($_GET['id_dm'])? $_GET['id_dm'] : '';
+    $sapxep = isset($_GET['sort'])? $_GET['sort'] : '';
+
      $so_sp_1_trang=20;
      if(isset($_GET['trang'])){
         $trang=$_GET['trang'];
@@ -36,9 +37,22 @@ https://templatemo.com/tm-559-zay-shop
         $trang=1;
 
      }
-          $from=($trang-1)*$so_sp_1_trang;
-    $sql="SELECT * FROM sanpham ORDER BY sp_id DESC LIMIT $from, $so_sp_1_trang";
+    $from=($trang-1)*$so_sp_1_trang;
+    $sql="SELECT * FROM sanpham ";
+    if($tl==''){
+            $sql=$sql;
+    } else{
+            $sql=$sql."WHERE tl_id='".$tl."' AND dm_id='".$dm."' ";
+    }
+    if ($sapxep == '') {
+            $sql = $sql ."ORDER BY sp_id ";
+    } else {
+            $sql = $sql ."ORDER BY " .$sapxep;
+    }
+     $sql=$sql."LIMIT $from, $so_sp_1_trang" ;
+     // echo $sql; exit();                  
     $san_pham=mysqli_query($con,$sql);
+    // echo $san_pham; exit();
     ?>
 
 
@@ -50,16 +64,14 @@ https://templatemo.com/tm-559-zay-shop
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Danh mục</h1>
                 <?php  
-                    $sql_dm= "SELECT * FROM sanpham JOIN danhmucsp ON sanpham.dm_id=danhmucsp.dm_id ";
+                    $sql_dm= "SELECT DISTINCT dm_ten_danh_muc ,danhmucsp.dm_id FROM sanpham JOIN danhmucsp ON sanpham.dm_id=danhmucsp.dm_id ";
                     $danh_muc=mysqli_query($con,$sql_dm);
-
                 ?>
                 <ul class="list-unstyled templatemo-accordion"  >
                     <?php
                         $i=0;
                         while ($row_dm=mysqli_fetch_array($danh_muc)) {
                             $i++;
-                            
                     ?>
                     <li class="pb-3">
                         <a class="collapsed d-flex justify-content-between h3 text-decoration-none"  href="#">
@@ -72,14 +84,12 @@ https://templatemo.com/tm-559-zay-shop
                                 $the_loai=mysqli_query($con,$sql_tl);
                                 $t=0;
                                     while ($row_tl=mysqli_fetch_array($the_loai)) {
-                            $t++;
+                                                    $t++;
                              ?>
-                            <li><a class="text-decoration-none" href="#"><?php echo $row_tl['tl_ten_tl'] ?></a></li>
+                            <li><a class="text-decoration-none" href="shop.php?id_tl=<?php echo $row_tl['tl_id'] ?>&id_dm=<?php echo $row_dm['dm_id'] ?>&sort=&trang=1"><?php echo $row_tl['tl_ten_tl'] ?></a></li>
                             <?php } ?>
-                           
                         </ul>
                     </li>
-                    
                 <?php } ?>
                 </ul>
             </div>
@@ -102,11 +112,13 @@ https://templatemo.com/tm-559-zay-shop
                     <!-- sắp xếp sản phẩm -->
                     <div class="col-md-6 pb-4">
                         <div class="d-flex">
-                            <select class="form-control">
-                                <option>Sắp xếp</option>
-                                <option>Tất cả</option>
-                                <option>Mới nhất</option>
-                                <option>A to Z</option>
+                            <select name="select-sort" class="select-sort" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=&trang=1"<?php if($sapxep=='') echo "selected"; ?>>Liên quan</option>
+                                <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_tensp &trang=1"<?php if($sapxep=='sp_tensp ') echo "selected"; ?>>A tới Z</option>
+                                <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_tensp DESC &trang=1"<?php if($sapxep=='sp_tensp DESC ') echo "selected"; ?>>Z tới A</option>
+                                <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_gia &trang=1"<?php if($sapxep=='sp_gia ') echo "selected"; ?>>Giá, thấp đến cao</option>
+                                <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_gia DESC &trang=1"<?php if($sapxep=='sp_gia DESC ') echo "selected"; ?>>Giá, cao đến thấp</option>
+                                <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_id &trang=1"<?php if($sapxep=='sp_id ') echo "selected"; ?>>Bán chạy</option>
                             </select>
                         </div>
                     </div>
@@ -150,14 +162,19 @@ https://templatemo.com/tm-559-zay-shop
                     <ul class="pagination pagination-lg justify-content-center">
 
                     <?php 
-                        $tong="SELECT sp_id FROM sanpham";
+                    #Lấy ID của page
+$tl = isset($_GET['tl_id'])? $_GET['tl_id'] : '';
+    $dm = isset($_GET['dm_id'])? $_GET['dm_id'] : '';
+                                
+                        $tong="SELECT * FROM `sanpham` JOIN danhmucsp ON danhmucsp.dm_id=sanpham.dm_id JOIN theloai ON theloai.tl_id=sanpham.tl_id WHERE (1=1);";
+
                         $tong_sp = mysqli_query($con, $tong)->num_rows;
                                 // echo $tong_sp; exit();
                         $so_trang= ceil($tong_sp/$so_sp_1_trang);
                                  // echo $so_trang; exit();
                             for ($t=1; $t <=$so_trang ; $t++) { ?>
                                     <li class="page-item ">
-                                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="shop.php?trang=<?php echo $t ?>" tabindex="-1"><?php echo "$t" ?></a>
+                                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="shop.php?trang=<?php echo $t?>" tabindex="-1"><?php echo "$t" ?></a>
                                    <!--  // echo " 
                                     // <a href='index.php?trang=$t'>$t</a> " ; -->
                     <?php } ?>   
