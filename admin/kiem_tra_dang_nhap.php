@@ -1,14 +1,13 @@
 <?php
 	// Lấy các dữ liệu được chuyển sang
-	$user_hoten=$_POST['txtEmail'];
-	$password=md5($_POST['txtMatkhau']);
-// echo $user_hoten;
-// echo $password; exit();
+	$email=$_POST['txtEmail'];
+	$password=md5($_POST['txtPassword']);
+
 	// Kiểm tra xem Username & Password có khớp với thông tin lưu trong CSDL hay không?
 	$sql="
 		SELECT *
 		FROM user
-		WHERE email='".$user_hoten."' AND password='".$password."'
+		WHERE email='".$email."' AND password='".$password."'
 	";
 	// echo $sql; exit();
 
@@ -25,7 +24,7 @@
 ;?>
 	<script type="text/javascript">
 		window.alert("Bạn đã đăng nhập thành công!");
-		window.location.href = "../admin/index.php";
+		window.location.href = "../index.php";
 	</script>
 <?php
 	} else {

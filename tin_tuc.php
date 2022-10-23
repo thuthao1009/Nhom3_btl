@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Zay Shop - Product Listing Page</title>
+    <title>LazaBA - Tin tức liên quan  </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,6 +17,9 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+
+    <!-- Load map styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 <!--
     
 TemplateMo 559 Zay Shop
@@ -26,14 +30,15 @@ https://templatemo.com/tm-559-zay-shop
 </head>
 
 <body>
-     <!-- Start Top Nav -->
+    <!-- Start Top Nav -->
+    <!-- không phải viết -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
                     <!-- email -->
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">bav.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <!-- số điện thoại -->
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
@@ -51,6 +56,7 @@ https://templatemo.com/tm-559-zay-shop
 
 
     <!-- Header -->
+    <!-- không phải viết -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
@@ -110,6 +116,7 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Close Header -->
 
     <!-- Modal -->
+    <!-- không phải viết -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="w-100 pt-1 mb-5 text-right">
@@ -127,443 +134,57 @@ https://templatemo.com/tm-559-zay-shop
     </div>
 
 
-
-
-    <!-- Start Content -->
-    <div class="container py-5">
-        <div class="row">
-
-            <div class="col-lg-3">
-                <h1 class="h2 pb-4">Categories</h1>
-                <ul class="list-unstyled templatemo-accordion">
-                    <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            Gender
-                            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-                        </a>
-                        <ul class="collapse show list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Men</a></li>
-                            <li><a class="text-decoration-none" href="#">Women</a></li>
-                        </ul>
-                    </li>
-                    <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            Sale
-                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                        </a>
-                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Sport</a></li>
-                            <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        </ul>
-                    </li>
-                    <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            Product
-                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                        </a>
-                        <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Bag</a></li>
-                            <li><a class="text-decoration-none" href="#">Sweather</a></li>
-                            <li><a class="text-decoration-none" href="#">Sunglass</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-9">
-                <div class="row">
-                    
-                    <div class="col-md-6 pb-4">
-                        <div class="d-flex">
-                            <select class="form-control">
-                                <option>Featured</option>
-                                <option>A to Z</option>
-                                <option>Item</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- ô sản phẩm  1 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            
-                            <div class="card rounded-0">
-<!-- ảnh sản phẩm -->
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_01.jpg">
-<!-- màn xám khi trỏ chuột vào sản phẩm -->
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-<!-- nút like, xem, thêm vào giỏ -->
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>     
-                            </div>
-<!-- thông tin dưới ảnh sản phẩm -->
-                            <div class="card-body">
-<!-- tên sản phẩm -->
-                                <a href="shop-single.html" class="h3 text-decoration-none"></a>
-<!-- thông tin size -->
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-<!-- số sao -->
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-<!--giá -->
-                                <p class="text-center mb-0">$250.00</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- hết ô sản phẩm 1 -->
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_02.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">$250.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_03.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">$250.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_04.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">$250.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_05.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">$250.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_06.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">$250.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_07.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">$250.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_08.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">$250.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_09.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">$250.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div div="row">
-                    <ul class="pagination pagination-lg justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
+    <!-- Start Content Page -->
+    <div class="container-fluid bg-light py-5">
+        <div class="col-md-6 m-auto text-center">
+            <h1 class="h1">Tin tức liên quan  </h1>
+            <p>
+                
+            </p>
         </div>
     </div>
-    <!-- End Content -->
+
+  <div class="row">
+                    <div class="col-12">
+                        <div class="header-menu-vertical pos-relative m-t-30">
+                            
+
+                            <h4 class="menu-title link--icon-left"><i class="far fa-align-left"></i>1 số tin nổi bật </h4>
+                               
+
+                                <ul class="menu-content pos-absolute">
+                                <p style ="text-align: left ;"><img src="phuyen.jpg" style="width:300px; height: 300px ;"></p>
+                                <li class="menu-item"><a class= "text-decoration-none" href="https://www.facebook.com/ACCCovanhoctap/posts/pfbid0dd4eqPwpZ5ujBwqXHGgifXhyyuGNU2Vz6mezZUCW5KhcEtPB55ym4whYHKRiGyC8l"> Đăng ký tham gia chương trình trao đổi sinh viên tại Học viện Ngân hàng - Phân viện Phú Yên</a></li>
+                                
+                                <p style ="text-align: left ;"><img src="khaigiang.jfif" style="width:300px; height: 300px ;"></p>
+                                <li class="menu-item"><a class= "text-decoration-none" href="https://www.hvnh.edu.vn/hvnh/vi/ban-tin-hoc-vien-ngan-hang/an-tuong-le-khai-giang-nam-hoc-moi-hoc-vien-ngan-hang-20222023-doan-ket-doi-moi-ky-cuong-2001.html">Ấn tượng lễ khai giảng năm học mới của Học viện Ngân hàng</a></li>
+                                <p style ="text-align: left ;"><img src="shcd.jfif" style="width:300px; height: 300px ;"></p>
+                                <li class="menu-item"><a class= "text-decoration-none" href="https://l.facebook.com/l.php?u=https%3A%2F%2Fbit.ly%2F3SmerNd%3Ffbclid%3DIwAR0HTn6ZeBfSkQWxBHg3zMHcb2GcyIwgz1-HKW7N9RhScccCvdIlg8B1gAs&h=AT3f9sK1BQJ46Ap9Vvtj_j48k9JEeDM6yyVQP2-_w3aVG2oISMxfw1yc4gUcBCx5WklzrrAwbBXZS-ab8o7h-7HBAON1Zj1isLv9oxXIMJ9Q_JjhVq6FTAEsCmJP_FrOddgA&__tn__=-UK-R&c[0]=AT2yuoR6I58Oc89agkGoxwllPqgr1eqjoG3a0ZLKk2no9ALwLrJynoMjBP1DDZicL20xRmuILA-MSKNLRIav40M8vkVe61hUOhKywTsOQryL83jBcIWbgH8Xu0fp6iaTNlHTsDNeQxw6BpQDL1gF530Dset66K6y-qDoY0_HgiBmsnIHKf8ITTHqwITy93L3MsCvbzgQ1lmOTQ">THÔNG BÁO thực hiện bài thu hoạch “Tuần sinh hoạt công dân sinh viên” năm học 2022 - 2023</a></li>
+                                <p style ="text-align: left ;"><img src="nxb.png" style="width:300px; height: 300px ;"></p>
+                                <li class="menu-item"><a class= "text-decoration-none" href="https://www.hvnh.edu.vn/hvnh/vi/thong-tin-tuyen-sinh/hoc-vien-ngan-hang-cong-bo-nguong-diem-trung-tuyen-he-dai-hoc-chinh-quy-nam-2022-tai-ha-noi-1966.html">Học viện Ngân hàng công bố điểm trúng tuyển đại học chính quy năm 2022</a></li>
+
+                                    
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>  
 
     
 
 
     <!-- Start Footer -->
+    <!-- không phải viết -->
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">LazaBA</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            12 P.Chùa Bộc, Quang Trung, Đống Đa, Hà Nội
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
@@ -571,13 +192,13 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:bav@gmail.com"> bav.com</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Sản phẩm  </h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="#">Luxury</a></li>
                         <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
@@ -590,13 +211,13 @@ https://templatemo.com/tm-559-zay-shop
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Thông tin cần thiết </h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                        <li><a class="text-decoration-none" href="#">Trang chủ </a></li>
+                        <li><a class="text-decoration-none" href="#">Giới thiệu </a></li>
+                        <li><a class="text-decoration-none" href="#">Địa chỉ </a></li>
+                        <li><a class="text-decoration-none" href="#">Câu hỏi thường gặp </a></li>
+                        <li><a class="text-decoration-none" href="#">Liên hệ </a></li>
                     </ul>
                 </div>
 
@@ -623,10 +244,10 @@ https://templatemo.com/tm-559-zay-shop
                     </ul>
                 </div>
                 <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
+                    <label class="sr-only" for="subscribeEmail">Địa chỉ Email </label>
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Địa chỉ Email ">
+                        <div class="input-group-text btn-success text-light">Đăng kí </div>
                     </div>
                 </div>
             </div>
@@ -637,8 +258,8 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; 2021 Company Name 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                            Copyright &copy; 2022  Company Name 
+                            | Designed by <a rel="sponsored" href="https://LazaBA.com" target="_blank">LazaBA</a>
                         </p>
                     </div>
                 </div>
@@ -655,6 +276,8 @@ https://templatemo.com/tm-559-zay-shop
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
     <!-- End Script -->
+
 </body>
+
 
 </html>

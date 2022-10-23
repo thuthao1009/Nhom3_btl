@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>BAbook - Mua bán tài liệu </title>
+    <title>web trao đổi tài liệu cho sinh viên ngân hàng học viện| Giỏ hàng </title>
     
     <!-- Font awesome -->
     <link href="../assets/css/font-awesome.css" rel="stylesheet">
@@ -50,7 +50,7 @@
 <?php 
     $tong_tien=0;
     $so_luong_sp=0;
-    $gio_hang=(isset($_SESSION['gio_hang']))? $_SESSION['gio_hang'] : [];     
+   $gio_hang=(isset($_SESSION['gio_hang']))? $_SESSION['gio_hang'] : [];     
        ;?>
        <section id="cart-view">
    <div class="container">
