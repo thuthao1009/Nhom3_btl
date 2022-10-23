@@ -1,251 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>LazaBA</title>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-</head>
-<body>
-
-    <?php 
-    require('config.php');
-    require('menu.php');
-    $sql="SELECT * FROM sanpham ORDER BY so_luot_xem DESC LIMIT 0,8";
-    $san_pham_noi_bat=mysqli_query($con,$sql);
-    ?>
-    <!-- Start Banner Hero -->
-    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/HVNH1.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-success"><b>Zay</b> eCommerce</h1>
-                                <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
-                                
-                                <p>
-                                    Zay Shop is an eCommerce HTML5 CSS template with latest version of Bootstrap 5 (beta 1). 
-                                    This template is 100% free provided by <a rel="sponsored" class="text-success" href="https://templatemo.com" target="_blank">TemplateMo</a> website. 
-                                    Image credits go to <a rel="sponsored" class="text-success" href="https://stories.freepik.com/" target="_blank">Freepik Stories</a>,
-                                    <a rel="sponsored" class="text-success" href="https://unsplash.com/" target="_blank">Unsplash</a> and
-                                    <a rel="sponsored" class="text-success" href="https://icons8.com/" target="_blank">Icons 8</a>.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/banner_img_02.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">Proident occaecat</h1>
-                                <h3 class="h2">Aliquip ex ea commodo consequat</h3>
-                                <p>
-                                    You are permitted to use this Zay CSS template for your commercial websites. 
-                                    You are <strong>not permitted</strong> to re-distribute the template ZIP file in any kind of template collection websites.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/banner_img_03.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">Repr in voluptate</h1>
-                                <h3 class="h2">Ullamco laboris nisi ut </h3>
-                                <p>
-                                    We bring you 100% free CSS templates for your websites. 
-                                    If you wish to support TemplateMo, please make a small contribution via PayPal or tell your friends about our website. Thank you.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-            <i class="fas fa-chevron-left"></i>
-        </a>
-        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-            <i class="fas fa-chevron-right"></i>
-        </a>
-    </div>
-    <!-- End Banner Hero -->
-
-
-
-    <section class="container py-5">
-        <div class="row text-center pt-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">Danh mục sản phẩm</h1>
-                <p>
-                    Những thứ bạn có thể kiếm được trong LazaBA
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">Tài liệu môn học</h5>
-                <p class="text-center"><a class="btn btn-success">Xem thêm</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Tiểu luận</h2>
-                <p class="text-center"><a class="btn btn-success">Xem thêm</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Nghiên cứu khoa học</h2>
-                <p class="text-center"><a class="btn btn-success">Xem thêm</a></p>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Start Featured Product -->
-    <section class="bg-light">
-        <div class="container py-5">
-            <!-- giới thiệu hàng sản phẩm nổi bật -->
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Sản phẩm nổi bật</h1>
-                    <p>
-                        Những sản phẩm được xem nhiều nhất
-                    </p>
-                </div>
-            </div>
-            <!-- giới thiệu hàng sản phẩm nổi bật -->
-
-            <!-- sản phẩm nổi bật -->
-          
-
-            <div class="row  carousel-related-product">
-            
-                <?php 
-       
-                $i=0;
-                while ($row = mysqli_fetch_array($san_pham_noi_bat)) {
-                    $i++;
-                ;?>
-            <div class="col-md-3 " >
-                        <div class="card mb-4 product-wap rounded-0" >
-                            <div class="card rounded-0">
-                                    <img class="card-img rounded-0 img-fluid" src="assets/img/shop_01.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.php?id=<?php echo $row['sp_id'] ?>"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row['sp_id'] ?>"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row['sp_id'] ?>"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="content hideContent text-decoration-none"><a href="shop-single.php?id=<?php echo $row['sp_id'] ?>" class="content hideContent text-decoration-none"><?php echo $row['sp_tensp']  ?></a></div>
-                                <div class="content hideContent text-decoration-none"><?php echo $row['sp_mo_ta']  ?></div>
-                            <div class="show-more">
-                                <a href="shop-single.php?id=<?php echo $row['sp_id'] ?>" class="h3 text-decoration-none">Xem thêm</a>
-                            </div>
-                                <p class="text-center mb-0"><?php echo $row['sp_gia']  ?></p>
-                            </div>
-                        </div>
-                    </div>
-                <?php 
-                    }
-                ;?>
-    </div>
-
-    </section>
-    <!-- End Featured Product -->
-
-
-    <?php require('footer.php');?>
-
-
-    <!-- Start Script -->
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>web trao đổi tài liệu cho sinh viên ngân hàng học viện| Trang chủ</title>
     
-    <!-- End Script -->
-    <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <!-- End Script -->
+    <!-- Font awesome -->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">   
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="../assets/css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/jquery.simpleLens.css">    
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/nouislider.css">
+    <!-- Theme color -->
+    <link id="switcher" href="../assets/css/theme-color/dark-red-theme.css" rel="stylesheet">
+    <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
+    <!-- Top Slider CSS -->
+    <link href="../assets/css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
-    <!-- Start Slider Script -->
-    <script src="assets/js/slick.min.js"></script>
-    <script>
-        $('#carousel-related-product').slick({
-            infinite: true,
-            arrows: false,
-            slidesToShow: 4,
-            slidesToScroll: 3,
-            dots: true,
-            responsive: [{
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                    }
-                },
+    <!-- Main style sheet -->
+    <link href="../assets/css/style.css" rel="stylesheet">    
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  </head>
+  <body> 
+  <?php
+      session_start();
+      include('../components/header.php');
+  ?>
+
+  <!-- / menu -->
+  <?php
+  include('../components/banner.php');
+    ?>
+  <!-- Start slider -->
+  
+  <!-- Them cho FIIN--> 
+  <!-- Products section -->
+      <h3 style="text-align: center;" >#MADEBYFIIN</h3>
+  <section id="aa-product">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="aa-product-area">
+              <div class="aa-product-inner">
+                <!-- start prduct navigation -->
+                 <ul class="nav nav-tabs aa-products-tab">
+                    <li class="active"><a href="#best-sellers" data-toggle="tab">Best Sellers</a></li>
+                    <li><a a href="#new-arrivals" data-toggle="tab">New Arrivals</a></li>
+                  </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <!-- Start men product category -->
+                    <div class="tab-pane fade in active" id="best-sellers">
+                      <ul class="aa-product-catg">
+                        <!-- start single product item -->
+                      <?php
+                                // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
+                        include '../public/connect.php';
+          // 2. Viết câu lệnh truy vấn để lấy ra dữ liệu mong muốn (TIN TỨC đã lưu trong CSDL)
+          $sql = "
+                    SELECT * 
+                    FROM tbl_san_pham
+                    WHERE so_luong < 15 
+                    LIMIT 12   
+          ";
+
+          // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
+          $noi_dung_san_pham = mysqli_query($ket_noi, $sql);
+
+          // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy
+          while($row = mysqli_fetch_array($noi_dung_san_pham)){
+       ;?>    
+       <li>
+                  <figure>
+                    <a class="aa-add-card-btn" href="gio_hang.php?id=<?php echo $row["id_san_pham"];?>"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                    <figcaption>
+                    <a class="aa-product-img" href="san_pham_chi_tiet.php?id=<?php echo $row["id_san_pham"];?>"><img src="<?= '../assets/img/product/'.$row["ten_anh"] ?>" alt="" width="175" height="200"></a>
+                      <h4 class="aa-product-title"><a href="#"><?php echo $row["ten_san_pham"];?></a></h4>
+                      <span class="aa-product-price" href="san_pham_chi_tiet.php?id=<?php echo $row["id_san_pham"];?>"><?php echo $row["gia_tien"];?></span>
+                    </figcaption>
+                  </figure>                         
+                  <div class="aa-product-hvr-content">
+                    <div class="aa-product-hvr-content">
+                      <a href="yeu_thich.php?id=<?php echo $row["id_san_pham"]; ?>" data-toggle="tooltip" data-placement="top" title="Thêm vào danh sách yêu thích"><span class="fa fa-heart-o"></span></a>
+                    </div>                           
+                  </div>
+                  <!-- product badge -->
+                </li>
+
+                  <?php
+                  }
+               ;?>
+                    </div>
+                    <!-- / men product category -->
+                    <!-- start women product category -->
+                    <div class="tab-pane fade" id="new-arrivals">
+                      <ul class="aa-product-catg">
+                        <!-- start single product item -->
+                        <?php 
+          // 1. Load file cấu hình để kết nối đến máy chủ CSDL, CSDL
+                    include '../public/connect.php';
+  //2, Lấy ra dữ liệu mong muốn ( TIN TỨC lưu trong csdl )
+
+          // 2. Viết câu lệnh truy vấn để lấy ra dữ liệu mong muốn (TIN TỨC đã lưu trong CSDL)
+          $sql = "
+                    SELECT * 
+                    FROM tbl_san_pham
+                    WHERE mo_ta LIKE 'New arrival%'
+                    LIMIT 12 
+          ";
+
+          // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
+          $noi_dung_san_pham = mysqli_query($ket_noi, $sql);
+
+          // 4. Hiển thị ra dữ liệu mà các bạn vừa lấy
+          while($row = mysqli_fetch_array($noi_dung_san_pham)){
+       ;?>    
+       <li>
+                  <figure>
+                    <a class="aa-add-card-btn" href=gio_hang.php?id=<?php echo $row["id_san_pham"];?>""><span class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                    <figcaption>
+                    <a class="aa-product-img" href="san_pham_chi_tiet.php?id=<?php echo $row["id_san_pham"];?>"><img src="<?= '../assets/img/product/'.$row["ten_anh"] ?>" alt="" width="175" height="200"></a>
+                      <h4 class="aa-product-title"><a href="#"><?php echo $row["ten_san_pham"];?></a></h4>
+                      <span class="aa-product-price" href="san_pham_chi_tiet.php?id=<?php echo $row["id_san_pham"];?>"><?php echo $row["gia_tien"];?></span>
+                    </figcaption>
+                  </figure>                         
+                    <div class="aa-product-hvr-content">
+                      <div class="aa-product-hvr-content">
+                      <a href="yeu_thich.php?id=<?php echo $row["id_san_pham"]; ?>" data-toggle="tooltip" data-placement="top" title="Thêm vào danh sách yêu thích"><span class="fa fa-heart-o"></span></a>
+                    </div>
+                    </div>
+                  <!-- product badge -->
+                </li>
+
+                  <?php
+                  }
+               ;?>
+    </div>
+  </section>                
+                
+  <!-- / popular section -->
+  <!-- Support section -->
+  <section id="aa-support">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-support-area">
+            <!-- single support -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="aa-support-single">
+                <span class="fa fa-truck"></span>
+                <h4>FREE SHIPPING</h4>
+                <P>ĐƠN TRÊN 149K</P>
+              </div>
+            </div>
+            <!-- single support -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="aa-support-single">
+                <span class="fa fa-gift"></span>
+                <h4>QUÀ TẶNG</h4>
+                <P>VÔ VÀN QUÀ TẶNG</P>
+              </div>
+            </div>
+            <!-- single support -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="aa-support-single">
+                <span class="fa fa-phone"></span>
+                <h4>MUA Hàng NGAY</h4>
+                <P>NHẬN QUÀ </P>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Support section -->
+  <!-- Testimonial -->
+  <section id="aa-testimonial">  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-testimonial-area">
+            <ul class="aa-testimonial-slider">
+              <!-- single slide -->
+              <li>
+                <div class="aa-testimonial-single">
+                <img class="aa-testimonial-img" src="../assets/img/testimonial-img-1.png" alt="testimonial img">
+                  <span class="fa fa-quote-left aa-testimonial-quote"></span>
+                  <p>“Bất cứ ai cũng có thể diện những bộ tài liệu hay nhất”.</p>
+                  <div class="aa-testimonial-info">
+                    <p>ALEXANDER WANG</p>
+                    <span>Nhà xuất bản </span>
+                    <!--<a href="#">Dribble.com</a>-->
+                  </div>
+                </div>
+              </li>
+              <!-- single slide -->
+              <li>
+                <div class="aa-testimonial-single">
+                <img class="aa-testimonial-img" src="../assets/img/testimonial-img-2.png" alt="testimonial.img">
+                  <span class="fa fa-quote-left aa-testimonial-quote"></span>
+                  <p>“Sách hay”.</p>
+                  <div class="aa-testimonial-info">
+                    <p>GIORGIO ARMANI</p>
+                    <span>Nhà xuất bản</span>
+                    <!--<a href="#">Alphabet</a>-->
+                  </div>
+                </div>
+              </li>
+               <!-- single slide -->
+              <li>
+                <div class="aa-testimonial-single">
+                <img class="aa-testimonial-img" src="../assets/img/testimonial-img-3.png" alt="testimonial.img">
+                  <span class="fa fa-quote-left aa-testimonial-quote"></span>
+                  <p>“Tài liệu hay giúp các bạn học tập tốt hơn”.</p>
+                  <div class="aa-testimonial-info">
+                    <p>JEAN COCTEAU</p>
+                    <span>Nhà thơ</span>
+                    <!--<a href="#">Kinatic Solution</a>-->
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Testimonial -->
+
+<!-- Latest Blog -->
+  <section id="aa-latest-blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-latest-blog-area">
+            <h2>CÙNG zay Học tập hiệu quả</h2>
+            <div class="row">
+                <?php 
+                //1. kết nối đến máy chủ CSDL
+                $ket_noi=mysqli_connect("localhost","root","","qlqa");
+                //2.viết câu lệnh truy vấn lấy ra được DL mong muốn 
+                $sql=" SELECT * FROM tbl_tin_tuc  ORDER BY id_tin_tuc DESC" ;
+                //3. thực hiện câu lệnh truy vấn 
+                $noi_dung_tin_tuc= mysqli_query($ket_noi,$sql);
+                //4. hiển trị ra dữ liệu mà bạn vừa lấy
+                while($row=mysqli_fetch_array($noi_dung_tin_tuc))
                 {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 3
-                    }
+                ;?>
+                
+                <div class="col-md-4 col-sm-4">
+                <div class="aa-latest-blog-single">
+                  <figure class="aa-blog-img">                    
+                    <a href="#"><img src="<?php echo $row['anh_minh_hoa'] ? '../assets/img/'.$row['anh_minh_hoa']:'../assets/img/promo-banner-4.jpg' ;?>" alt=""></a>
+  
+                      <figcaption class="aa-blog-img-caption">
+                      <span href="#"><i class="fa fa-eye"></i><?php echo $row["so_lan_doc"];?></span>
+                  
+                      <span href="#"><i class="fa fa-clock-o"></i><?php echo date("d/M/Y", strtotime($row["ngay_dang"]));?> </span>
+                    </figcaption>                          
+                  </figure>
+                  <div class="aa-blog-info">
+                    <h4><?php echo $row["tieu_de"];?></h4>
+                    <p><?php echo $row["mo_ta"];?></p> 
+                    <a href= "blog.php?id=<?php echo $row["id_tin_tuc"];?>" class="aa-read-mor-btn">Đọc thêm <span class="fa fa-long-arrow-right"></span></a>
+                  </div>
+                </div>
+              </div>
+           
+                  
+             <?php
                 }
-            ]
-        });
-    </script>
-    <!-- End Slider Script -->
-</body>
+                ;?>
+                
+            </div>
+          </div>
+        </div>    
+      </div>
+    </div>
+  </section>
+  <!-- / Latest Blog -->
 
+  <!-- footer -->  
+  <?php
+      include('../components/footer.php');
+  ?>
+
+  </body>
 </html>
