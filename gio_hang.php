@@ -1,151 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>Zay Shop - Product Detail Page</title>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <!-- Tải kiểu phông chữ sau khi hiển thị các kiểu bố cục -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-
-    <!-- Slick -->
-    <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
-<!--
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>BAbook - Mua bán tài liệu </title>
     
-TemplateMo 559 Zay Shop
+    <!-- Font awesome -->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">   
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="../assets/css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/jquery.simpleLens.css">    
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/nouislider.css">
+    <!-- Theme color -->
+    <link id="switcher" href="../assets/css/theme-color/dark-red-theme.css" rel="stylesheet">
+    <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
+    <!-- Top Slider CSS -->
+    <link href="../assets/css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
-https://templatemo.com/tm-559-zay-shop
+    <!-- Main style sheet -->
+    <link href="../assets/css/style.css" rel="stylesheet">    
 
--->
-</head>
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    
 
-<body>
-     <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <!-- email -->
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <!-- số điện thoại -->
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                </div>
-                <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Close Top Nav -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body> 
+  <?php
+      session_start();
+      include('../components/header.php');
+      include('../components/banner.php');
+      require ('../cart/code.php');
+    
+  ?>
+<?php 
+    $tong_tien=0;
+    $so_luong_sp=0;
+    $gio_hang=(isset($_SESSION['gio_hang']))? $_SESSION['gio_hang'] : [];     
+       ;?>
+       <section id="cart-view">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="cart-view-area">
+           <div class="cart-view-table">
+             <form action="">
+               <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Hủy bỏ</th>
+                        <th>Ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng muốn mua </th>
+                        <th>Đơn giá</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($gio_hang as $key => $value):
+                      $tong_tien += $value['gia_tien']*$value['quantity'];
+                      $so_luong_sp+=$value['quantity'];
+                      ?>
+                      <tr>
+                        <td><a href="gio_hang.php?id=<?php echo $value['id_san_pham']?>&action=delete" title="" class="btn btn-danger">Xóa</a></td>
+                        <td><a class="aa-product-img" ><img src="../assets/img/product/<?php echo $value['ten_anh'] ?>" alt="" width="400" height="400"></a></td>
+                        <td><?php echo $value['ten_san_pham'];?></td>
+                        <td><?php echo $value['quantity'];?></td>
+                        <td><?php echo $value['gia_tien'];?></td>
+                      </tr>
+                    <?php endforeach ?> 
+                      <tr>
+                          <td></td>
+                          <th>Số sản phẩm</th>
+                          <td></td>
+                          <td></td>
+                          <td><?php echo $so_luong_sp;?></td>
+                      </tr>          
+                       <tr>
+                          <td></td>
+                          <th>Tổng giá</th>
+                          <td></td>
+                          <td></td>
+                          <td><?php echo $tong_tien;?></td>
+                      </tr>      
+                      <tr>
+                      </tr>
+                      </tbody>
+                      </table>
+                      </div>
+                      </form>
+                      </div>
+                      </div>
+                      <a href="thanh_toan.php?tong_tien=<?php echo $tong_tien?>&so_luong_sp=<?php echo $so_luong_sp?>" class="aa-cart-view-btn"> Thanh toán</a>
+                      </div>
 
-
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h5 align-self-center" href="index.html">
-                LazaBA
-            </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Trang chủ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="tin_tuc.html">Tin tức</a>
-                        </li>                       
-                        <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Sản phẩm</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">Thông tin</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Liên hệ</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="gio_hang.html">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-    <!-- Close Header -->
-
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
+  </div>
+  </form>
+</section>
+</section>
 
 
-
-
-
-
-<!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <!-- End Script -->
-
-</body>
-
+<!-- footer -->  
+<?php 
+        include('../components/footer.php');
+    ;?>
+  </body>
 </html>

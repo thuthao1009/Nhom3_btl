@@ -25,13 +25,15 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Danh mục<br>sản phẩm</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Giáo trình</a></li>
-                        <li><a class="text-decoration-none" href="#">Tài liệu tiếng việt</a></li>
-                        <li><a class="text-decoration-none" href="#">Tài liệu tiếng anh</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                        <?php
+                            $sql_dm="SELECT DISTINCT danhmucsp.dm_ten_danh_muc, danhmucsp.dm_id FROM danhmucsp ";
+                            $danh_muc=mysqli_query($con,$sql_dm);  
+                             $i=0;
+                while ($row_dm=mysqli_fetch_array($danh_muc)) {
+                     $i++;
+                        ?>
+                        <li><a class="text-decoration-none" href="shop.php?id_tl=&id_dm=<?php echo $row_dm['dm_id'] ?>&sort=&trang=1"><?php echo $row_dm['dm_ten_danh_muc'] ?></a></li>
+                        <?php } ?>
                     </ul>
                 </div>
 
@@ -68,13 +70,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
-                    </div>
-                </div>
+                
             </div>
         </div>
 
@@ -84,7 +80,7 @@
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; LazaBA 
-                            | Designed by <a rel="sponsored" href="" target="_blank">Nhóm 3</a>
+                            | Designed by <a rel="sponsored" href="index.php">Nhóm 3</a>
                         </p>
                     </div>
                 </div>

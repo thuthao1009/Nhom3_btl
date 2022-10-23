@@ -214,3 +214,7 @@ body, ul, li, p, a, label, input, div {
     margin-right: auto;
 
 }
+.select-font{
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px !important;
+}

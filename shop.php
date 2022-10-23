@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Zay Shop - Product Listing Page</title>
+    <title>BAbook - Mua bán tài liệu</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
@@ -25,31 +25,50 @@ https://templatemo.com/tm-559-zay-shop
     <?php 
     require('config.php');
     require('menu.php');
+    $keyword = isset($_GET['keyword'])? $_GET['keyword'] : '';
     $tl = isset($_GET['id_tl'])? $_GET['id_tl'] : '';
+
     $dm = isset($_GET['id_dm'])? $_GET['id_dm'] : '';
     $sapxep = isset($_GET['sort'])? $_GET['sort'] : '';
+    // echo $sapxep; exit();
 
-     $so_sp_1_trang=20;
-     if(isset($_GET['trang'])){
+    $so_sp_1_trang=20;
+    if(isset($_GET['trang'])){
         $trang=$_GET['trang'];
         settype($trang, "int");
      }else{
         $trang=1;
-
      }
+    // echo $tl;
+    // echo $dm;
+    // echo $sapxep;
+    // echo $trang; exit();
     $from=($trang-1)*$so_sp_1_trang;
     $sql="SELECT * FROM sanpham ";
+    if($keyword==''){
+            $sql=$sql;
+    } else{
+            $sql=$sql."WHERE sp_tensp LIKE '%".$keyword."%' ";
+    }
     if($tl==''){
             $sql=$sql;
     } else{
-            $sql=$sql."WHERE tl_id='".$tl."' AND dm_id='".$dm."' ";
+            $sql=$sql."WHERE tl_id='".$tl."' ";
+    }
+    if($dm==''){
+            $sql=$sql;
+    } else if ($tl =='') {
+        $sql=$sql."WHERE dm_id='".$dm."' ";
+    }else 
+    {
+            $sql=$sql."AND dm_id='".$dm."' ";
     }
     if ($sapxep == '') {
             $sql = $sql ."ORDER BY sp_id ";
     } else {
             $sql = $sql ."ORDER BY " .$sapxep;
     }
-     $sql=$sql."LIMIT $from, $so_sp_1_trang" ;
+     $sql=$sql." LIMIT $from, $so_sp_1_trang" ;
      // echo $sql; exit();                  
     $san_pham=mysqli_query($con,$sql);
     // echo $san_pham; exit();
@@ -62,9 +81,10 @@ https://templatemo.com/tm-559-zay-shop
         <div class="row">
 
             <div class="col-lg-3">
+                <!-- danh mục sản phẩm -->
                 <h1 class="h2 pb-4">Danh mục</h1>
                 <?php  
-                    $sql_dm= "SELECT DISTINCT dm_ten_danh_muc ,danhmucsp.dm_id FROM sanpham JOIN danhmucsp ON sanpham.dm_id=danhmucsp.dm_id ";
+                    $sql_dm= "SELECT DISTINCT dm_ten_danh_muc ,danhmucsp.dm_id FROM  danhmucsp ";
                     $danh_muc=mysqli_query($con,$sql_dm);
                 ?>
                 <ul class="list-unstyled templatemo-accordion"  >
@@ -90,18 +110,18 @@ https://templatemo.com/tm-559-zay-shop
                             <?php } ?>
                         </ul>
                     </li>
-                <?php } ?>
-                </ul>
+                 <?php } ?>
+                 </ul>
             </div>
             <div class="col-lg-9">
                 <div class="row">
-                   <!--  <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                             <li class="list-inline-item">
                                 <a class="h3 text-dark text-decoration-none mr-3" href="#">All</a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="#">Men's</a>
+                                <a class="h3 text-dark text-decoration-none mr-3" href="#"></a>
                             </li>
                             <li class="list-inline-item">
                                 <a class="h3 text-dark text-decoration-none" href="#">Women's</a>
@@ -112,13 +132,13 @@ https://templatemo.com/tm-559-zay-shop
                     <!-- sắp xếp sản phẩm -->
                     <div class="col-md-6 pb-4">
                         <div class="d-flex">
-                            <select name="select-sort" class="select-sort" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                                <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=&trang=1"<?php if($sapxep=='') echo "selected"; ?>>Liên quan</option>
+                            <select name="select-sort" class="select-sort select-font" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=& trang=1"<?php if($sapxep=='') echo "selected"; ?>>Liên quan</option>
                                 <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_tensp &trang=1"<?php if($sapxep=='sp_tensp ') echo "selected"; ?>>A tới Z</option>
                                 <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_tensp DESC &trang=1"<?php if($sapxep=='sp_tensp DESC ') echo "selected"; ?>>Z tới A</option>
                                 <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_gia &trang=1"<?php if($sapxep=='sp_gia ') echo "selected"; ?>>Giá, thấp đến cao</option>
                                 <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_gia DESC &trang=1"<?php if($sapxep=='sp_gia DESC ') echo "selected"; ?>>Giá, cao đến thấp</option>
-                                <option value="shop.php?id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=sp_id &trang=1"<?php if($sapxep=='sp_id ') echo "selected"; ?>>Bán chạy</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -126,167 +146,107 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="row">
 
                     <!-- ô sản phẩm  -->
-                    <?php 
+                    <?php
+
                         $i=0;
                         while ($row = mysqli_fetch_array($san_pham)) {
                                 $i++;
                     ;?>
-                    <div class="col-md-4">
+                    <div class="col-md-3 col-sm-6">
                         <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="assets/img/shop_01.jpg">
+                            <div class="card rounded-0" >
+                                <img class="card-img rounded-0 img-fluid" src="assets/img/<?php echo $row['sp_anh_minh_hoa'] ?>" style="height: 250px;" >
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.php?id=<?php echo $row['sp_id'] ?>"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row['sp_id'] ?>"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row['sp_id'] ?>"><i class="fas fa-cart-plus"></i></a></li>
+                                        <li>
+                                            <a class="btn btn-success text-white" href="shop-single.php?id=<?php echo $row['sp_id'] ?>">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row['sp_id'] ?>">
+                                                <i class="far fa-eye"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row['sp_id'] ?>">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                    <div class="content hideContent text-decoration-none"><a href="shop-single.php?id=<?php echo $row['sp_id'] ?>" class="content hideContent text-decoration-none"><?php echo $row['sp_tensp']  ?></a></div>
-                                  
-                                    <div class="content hideContent h3 text-decoration-none"> <?php echo $row['sp_mo_ta']  ?></div>
-                                    <div class="show-more">
+                                    <div class="content hideContent text-decoration-none text-center" >
+                                        <a href="shop-single.php?id=<?php echo $row['sp_id'] ?>" class="content hideContent text-decoration-none"><?php echo $row['sp_tensp']  ?>  
+                                        </a>
+                                    </div>
+                                    <p class="text-center mb-0"><?php echo $row['sp_gia']  ?></p>
+                                    <div class="show-more text-center ">
                                         <a href="shop-single.php?id=<?php echo $row['sp_id'] ?>" class="h3 text-decoration-none">Xem thêm</a>
                                     </div>
-
-                                     <p class="text-center mb-0"><?php echo $row['sp_gia']  ?></p>
                             </div>
                         </div>
                     </div>
                     <?php };?>
                 </div>
+                <!-- hết ô sản phẩm  -->
                 <!-- số trang -->
                  <div div="row">
                     <ul class="pagination pagination-lg justify-content-center">
-
                     <?php 
-                    #Lấy ID của page
-$tl = isset($_GET['tl_id'])? $_GET['tl_id'] : '';
-    $dm = isset($_GET['dm_id'])? $_GET['dm_id'] : '';
-                                
-                        $tong="SELECT * FROM `sanpham` JOIN danhmucsp ON danhmucsp.dm_id=sanpham.dm_id JOIN theloai ON theloai.tl_id=sanpham.tl_id WHERE (1=1);";
+                            #Lấy ID của page
+                    if(isset($_GET['trang'])){
+        $trang=$_GET['trang'];
+        settype($trang, "int");
+     }else{
+        $trang=1;
+     }
+    $from=($trang-1)*$so_sp_1_trang;
+    $tong="SELECT * FROM sanpham ";
+    if($keyword==''){
+            $tong=$tong;
+    } else{
+            $tong=$tong."WHERE sp_tensp LIKE '%".$keyword."%' ";
+    }
+    if($tl==''){
+            $tong=$tong;
+    } else{
+            $tong=$tong."WHERE tl_id='".$tl."' ";
+    }
+    if($dm==''){
+            $tong=$tong;
+    } else if ($tl =='') {
+        $tong=$tong."WHERE dm_id='".$dm."' ";
+    }else 
+    {
+            $tong=$tong."AND dm_id='".$dm."' ";
+    }
+    if ($sapxep == '') {
+            $tong = $tong ."ORDER BY sp_id ";
+    } else {
+            $tong = $tong ."ORDER BY " .$sapxep;
+    }
+     $tong=$tong;
+                        
+                            $tong_sp = mysqli_query($con, $tong)->num_rows;
 
-                        $tong_sp = mysqli_query($con, $tong)->num_rows;
-                                // echo $tong_sp; exit();
-                        $so_trang= ceil($tong_sp/$so_sp_1_trang);
+                            $so_trang= ceil($tong_sp/$so_sp_1_trang);
+
                                  // echo $so_trang; exit();
                             for ($t=1; $t <=$so_trang ; $t++) { ?>
                                     <li class="page-item ">
-                                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="shop.php?trang=<?php echo $t?>" tabindex="-1"><?php echo "$t" ?></a>
+                                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="shop.php?id_tl=<?php echo $tl?>&id_dm=<?php echo $dm?>&sort=<?php echo $sapxep?>&trang=<?php echo $t?>" tabindex="-1"><?php echo "$t" ?></a>
                                    <!--  // echo " 
                                     // <a href='index.php?trang=$t'>$t</a> " ; -->
-                    <?php } ?>   
+                    <?php  }?>   
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <!-- End Content -->
-    <!-- Start Brands -->
-    <section class="bg-light py-5">
-        <div class="container my-4">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Our Brands</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        Lorem ipsum dolor sit amet.
-                    </p>
-                </div>
-                <div class="col-lg-9 m-auto tempaltemo-carousel">
-                    <div class="row d-flex flex-row">
-                        <!--Controls-->
-                        <div class="col-1 align-self-center">
-                            <a class="h1" href="#multi-item-example" role="button" data-bs-slide="prev">
-                                <i class="text-light fas fa-chevron-left"></i>
-                            </a>
-                        </div>
-                        <!--End Controls-->
-
-                        <!--Carousel Wrapper-->
-                        <div class="col">
-                            <div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="multi-item-example" data-bs-ride="carousel">
-                                <!--Slides-->
-                                <div class="carousel-inner product-links-wap" role="listbox">
-
-                                    <!--First slide-->
-                                    <div class="carousel-item active">
-                                        <div class="row">
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_03.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End First slide-->
-
-                                    <!--Second slide-->
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_03.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End Second slide-->
-
-                                    <!--Third slide-->
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_03.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_04.png" alt="Brand Logo"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End Third slide-->
-
-                                </div>
-                                <!--End Slides-->
-                            </div>
-                        </div>
-                        <!--End Carousel Wrapper-->
-
-                        <!--Controls-->
-                        <div class="col-1 align-self-center">
-                            <a class="h1" href="#multi-item-example" role="button" data-bs-slide="next">
-                                <i class="text-light fas fa-chevron-right"></i>
-                            </a>
-                        </div>
-                        <!--End Controls-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--End Brands-->
+    <?php require('footer.php');?>
+    
 
 
     <!-- Start Script -->
