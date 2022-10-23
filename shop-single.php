@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,10 +26,16 @@
 
 <body>
     <?php 
+ 
     $id=$_GET['id'];
     require('config.php');
     require('menu.php');
-    
+    //cập nhật số lượt xem
+    $sql_update="UPDATE sanpham SET so_luot_xem=so_luot_xem +1 WHERE sp_id=".$id;
+    $update=mysqli_query($con,$sql_update);
+   
+
+
     $sql = "SELECT * FROM `sanpham` JOIN theloai ON sanpham.tl_id=theloai.tl_id JOIN user ON user.user_id=sanpham.user_id JOIN danhmucsp ON `danhmucsp`.`dm_id`=  `sanpham`.`dm_id`   WHERE sanpham.sp_id=".$id;
     $san_pham=mysqli_query($con,$sql);
     $row=mysqli_fetch_array($san_pham);
@@ -41,9 +48,6 @@
     $sql_sl_anh="SELECT COUNT(*) FROM `thumucanh` WHERE sp_id='".$id."' ORDER BY `thumucanh`.`tma_id` ASC ";
     $sl_anh=mysqli_query($con,$sql_sl_anh);
     $row_sl_anh=mysqli_fetch_array($sl_anh);
-
-
-
     ?>
 
     <!-- Start Article -->
@@ -81,29 +85,28 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body" >
-
-                            <h1 class="h2">&nbsp <?php echo $row['sp_tensp'] ?></h1>
-                            <p class="h3 py-2">&nbsp <?php echo $row['sp_gia']  ?></p>
+                            <h1 class="h2">&nbsp<?php echo $row['sp_tensp']?></h1>
+                            <p class="h3 py-2">&nbsp<?php echo $row['sp_gia']?></p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>&nbsp Người đăng: </h6>
+                                    <h6>&nbsp&nbsp Người đăng: </h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <a href="nguoi_dang.php?id=<?php echo $row['user_id']?>" class=" text-decoration-none" style=" color: black;"><?php echo $row['user_hoten']  ?></a>
                                 </li>
                             </ul>
-                        
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>&nbsp Môn học:</h6>
+                                    <h6>&nbsp&nbsp Môn học:</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class=""><?php echo $row['tl_ten_tl']  ?></p>
                                 </li>
                             </ul>
+
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>&nbsp Tình trạng:</h6>
+                                    <h6>&nbsp&nbsp Tình trạng:</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class=""><strong><?php echo $row['sp_tinh_trang']  ?></strong></p>
@@ -111,15 +114,15 @@
                             </ul>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>&nbsp Năm xuất bản:</h6>
+                                    <h6>&nbsp&nbsp Năm xuất bản:</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class=""><strong><?php echo $row['sp_namxb']  ?></strong></p>
                                 </li>
                             </ul>
 
-                            <h6> &nbsp Mô tả</h6>
-                            <div class="content hideContent text-decoration-none" style="height: 240px;"> &nbsp<?php echo $row['sp_mo_ta']  ?></div>
+                            <h6> &nbsp&nbsp Mô tả</h6>
+                            <div class="content hideContent text-decoration-none" style="height: 240px;"> &nbsp&nbsp<?php echo $row['sp_mo_ta']  ?></div>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Còn lại:</h6>
@@ -146,10 +149,10 @@
                                 </div>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Mua ngay</button>
                                     </div>
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Thêm vào giỏ hàng</button>
                                     </div>
                                 </div>
                             </form>
@@ -189,12 +192,15 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="content hideContent text-decoration-none"><a href="shop-single.php?id=<?php echo $row_lq['sp_id'] ?>" class="content hideContent text-decoration-none"><?php echo $row_lq['sp_tensp']  ?></a></div>
-                                <div class="content hideContent text-decoration-none"><?php echo $row_lq['sp_mo_ta']  ?></div>
-                            <div class="show-more">
+                            <div class="content hideContent text-decoration-none" style="text-align: center;">
+                                <a href="shop-single.php?id=<?php echo $row_lq['sp_id'] ?>" class="content hideContent text-decoration-none"><?php echo $row_lq['sp_tensp']  ?>
+                                </a>
+                            </div>
+                            <p class="text-center mb-0"><?php echo $row_lq['sp_gia']?></p>
+                            <div class="show-more" style="text-align: center;">
                                 <a href="shop-single.php?id=<?php echo $row_lq['sp_id'] ?>" class="h3 text-decoration-none">Xem thêm</a>
                             </div>
-                                <p class="text-center mb-0"><?php echo $row_lq['sp_gia']?></p>
+                                
                         </div>
                     </div>
                 </div>
