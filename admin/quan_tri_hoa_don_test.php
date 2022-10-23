@@ -159,7 +159,7 @@
  
                                         // 2. Viết câu lệnh truy vấn để lấy ra dữ liệu mong muốn (TIN TỨC đã lưu trong CSDL)
                                         $sql = "
-                                                  SELECT   distinct *  from  hoadonchitiet join sanpham on sanpham.sp_id=hoadonchitiet.sp_id join hoadon on hoadon.hd_id=hoadonchitiet.hd_id
+                                                  SELECT   dist*  from  hoadonchitiet join sanpham on sanpham.sp_id=hoadonchitiet.sp_id join hoadon on hoadon.hd_id=hoadonchitiet.hd_id
                                                   ORDER BY hoadonchitiet.hd_id  DESC 
                                         ";
                                          
