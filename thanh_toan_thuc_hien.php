@@ -1,56 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Thanh toán </title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="sb-nav-fixed">
-
-        
-       
-
-        <?php 
+<?php 
+        session_start();
             // 1. kết nối với máy chủ
-            include '../public/connect.php';
+            require('config.php');
 
-            // 2. Viết câu lệnh truy vấn để thêm mới dữ liệu vào bảng TIN TỨC trong CSDL
+            //lấy ra thông tin mua hàng từ form đặt hàng
             $email = $_POST['txtEmail'];
             $ten = $_POST['txtHovaten'];
             $sdt = $_POST['txtSDT'];
             $dia_chi = $_POST['txtDiachi'];
-           
-           
-        
-        $so_luong_sp = $_POST['txtSoluong'];
-        $tong_tien = $_POST['txtTongtien'];
-        // 4.2. Câu lệnh INSERT
-        
-        
-        $sql=" INSERT INTO `tbl_khach_hang` (`id_khach_hang`, `email`, `ten`, `sdt`, `dia_chi`,`so_luong`, `tong_tien`, `trang_thai`) VALUES (NULL, '".$email."', '".$ten."', '".$sdt."', '".$dia_chi."', '".$so_luong_sp."', '".$tong_tien."', 0)"; 
+            $ghi_chu=$_POST['txtghichu'];
 
+            // lấy ra id khách hàng
+            $sql= "SELECT * FROM `user` WHERE email='".$email."'";
+            $user_id=mysqli_query($con,$sql);
+            $row=mysqli_fetch_array($user_id);
+;?>
+
+<?php  
+
+            $tong_tien = $_POST['txtTongtien'];
+        
+            //Câu lệnh INSERT
+    
+             $sql=" INSERT INTO `hoadon` (`hd_id`, `user_id_m`, `hd_ghi_chu`, `hd_ngay_dat_hang`, `hd_status`, `dia_chi`) VALUES (NULL, '".$row['user_id']."', '".$ghi_chu."', current_timestamp(), '1', '".$dia_chi."');"; 
+            // echo $sql; exit();
             // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
-            $noi_dung_tin_tuc = mysqli_query($ket_noi, $sql);
-            
+            $dat_hang = mysqli_query($con, $sql);
+
+            // lấy ra id đơn hàng mới nhất
+            $sql="SELECT * FROM `hoadon` ORDER BY `hoadon`.`hd_id` DESC LIMIT 0,1; ";
+            $dat_hang = mysqli_query($con, $sql);
+            $row=mysqli_fetch_array($dat_hang);
+
+
+
+
+            //insert vào chi tiết hóa đơn
+            for ($i=0; $i < sizeof($_SESSION['giohang']); $i++) 
+            { 
+                //lấy ra thông tin từng sản phẩm từ sesion giỏ hàng
+                $hinh=$_SESSION['giohang'][$i][0] ;
+                $ten=$_SESSION['giohang'][$i][1] ;
+                $gia=$_SESSION['giohang'][$i][2] ;
+                $soluong=$_SESSION['giohang'][$i][3] ;
+                $sp_id=$_SESSION['giohang'][$i][4] ;
+                $thanh_tien=$gia*$soluong;
+
+                $sql=" INSERT INTO `hoadonchitiet` (`hd_id`, `sp_id`, `gia`, `cthd_soluong`, `cthd_tongtien`) VALUES ('".$row['hd_id']."', '".$sp_id."', '".$gia."', '".$soluong."', '".$thanh_tien."');";
+               $dat_hang_ct = mysqli_query($con, $sql);
+
+                     
+            }
+
 
             // 4. Thông báo chèn dữ liệu thành công và đẩy các bạn về trang Quản trị tin tức
             echo "
                 <script type='text/javascript'>
-                    window.alert('Bạn đã đặt hàng thành công  thành công');
+                    window.alert('Bạn đã đặt hàng thành công');
                     window.location.href='index.php';
                 </script>
             ";
+            //xóa giỏ hàng sau khi thanh toán thành công     
+            unset($_SESSION['giohang']);
 
-            session_start();
-            unset($_SESSION['gio_hang']);
+            
+            
 
         ;?>
 
-    </body>
-</html>
+
+

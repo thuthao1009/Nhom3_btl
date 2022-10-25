@@ -9,10 +9,10 @@
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
                     <!-- email -->
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">webba.web00@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <!-- số điện thoại -->
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">000-000-0000</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -51,7 +51,7 @@
                             <a class="nav-link" href="shop.php">Sản phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">Thông tin</a>
+                            <a class="nav-link" href="cau_hoi_thuong_gap.php">Thông tin</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">Liên hệ</a>

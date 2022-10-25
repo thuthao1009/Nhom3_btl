@@ -1,3 +1,12 @@
+<?php 
+
+    // kiểm tra xem người dùng đã đăng nhập chưa
+     session_start();
+     ob_start();
+    
+    
+
+;?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -184,7 +193,8 @@ https://templatemo.com/tm-559-zay-shop
                                     <!-- //lấy dữ liệu sản phẩm  -->  
                                     <input type="hidden" name="tensp" value="<?php echo $row['sp_tensp']?>">
                                     <input type="hidden" name="gia" value="<?php echo $row['sp_gia']?>">
-                                    <input type="hidden" name="hinh" value="<?php  echo $row['sp_anh_minh_hoa'] ?>">
+                                    <input type="hidden" name="hinh" value="<?php echo $row['sp_anh_minh_hoa'] ?>">
+                                    <input type="hidden" name="idsp" value="<?php echo $row['sp_id'] ?>">
                                     <input type="hidden" name="soluong" value="1">
 
                                         

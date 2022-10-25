@@ -5,7 +5,7 @@
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop<br><br></h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">BAbook<br><br></h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -13,17 +13,18 @@
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            <a class="text-decoration-none" href="tel:000-000-0000">000-000-0000</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:LazaBA@info.com">LazaBA@info.com</a>
+                            <a class="text-decoration-none" href="mailto:webba.web00@gmail.com"> webba.web00@gmail.com </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Danh mục<br>sản phẩm</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Danh mục sản phẩm <br><br> </h2>
+
                     <ul class="list-unstyled text-light footer-link-list">
                         <?php
                             $sql_dm="SELECT DISTINCT danhmucsp.dm_ten_danh_muc, danhmucsp.dm_id FROM danhmucsp ";
@@ -79,7 +80,7 @@
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; LazaBA 
+                            Copyright &copy; BAbook 
                             | Designed by <a rel="sponsored" href="index.php">Nhóm 3</a>
                         </p>
                     </div>

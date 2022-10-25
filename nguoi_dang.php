@@ -100,7 +100,7 @@ https://templatemo.com/tm-559-zay-shop
 <!-- danh mục sản phẩm -->
                 <h1 class="h2 pb-4" id="moveto">Danh mục</h1>
                 <?php  
-                    $sql_dm= "SELECT DISTINCT dm_ten_danh_muc ,danhmucsp.dm_id FROM sanpham JOIN danhmucsp ON sanpham.dm_id=danhmucsp.dm_id ";
+                    $sql_dm= "SELECT DISTINCT dm_ten_danh_muc ,danhmucsp.dm_id FROM  danhmucsp  ";
                     $danh_muc=mysqli_query($con,$sql_dm);
                 ?>
                 <ul class="list-unstyled templatemo-accordion"  >
@@ -130,9 +130,11 @@ https://templatemo.com/tm-559-zay-shop
                  </ul>
             </div>
             <div class="col-lg-9">
+
                 <div class="row">
                     <!-- sắp xếp sản phẩm -->
                     <div class="col-md-6 pb-4">
+
                         <div class="d-flex">
                             <select name="select-sort" class="select-sort" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                                 <option value="nguoi_dang.php?id=<?php echo $id?>&id_tl=<?php echo $tl;?>&id_dm=<?php echo $dm ?>&sort=&trang=1"<?php if($sapxep=='') echo "selected"; ?>>Liên quan</option>

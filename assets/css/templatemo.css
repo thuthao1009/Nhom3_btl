@@ -68,7 +68,7 @@ body, ul, li, p, a, label, input, div {
 .bg-black { background-color: #402E32 !important;}
 .bg-success { background-color: #FF9222 !important;}
 .btn-success {
-  background-color: #FF9222 !important;
+  background-color: rgb(255,145,76) !important;
   border-color: #FFDA6C !important;
 }
 .pagination .page-link:hover {color: #000;}

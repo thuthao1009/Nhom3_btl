@@ -76,7 +76,7 @@
             <div class="col-lg-6 m-auto">
                 <h1 class="h1">Danh mục sản phẩm</h1>
                 <p>
-                    Những thứ bạn có thể kiếm được trong LazaBA
+                    Những thứ bạn có thể kiếm được trong BAbook
                 </p>
             </div>
         </div>
@@ -87,11 +87,13 @@
                      $i++;
                   
              ?>
-            <div class="col-12 col-md-3 p-5 mt-3">
+            <div class="col-12 col-md-3 col-sm-6 p-5 mt-3">
                 <a href="#">
                     <img src="./assets/img/file.png" class="rounded-circle img-fluid border">
                 </a>
-                <h5 class="text-center mt-3 mb-3"><?php echo $row_dm['dm_ten_danh_muc'] ?></h5>
+                <div style="height: 70px;">
+                    <h5 class="text-center mt-3 mb-3"><?php echo $row_dm['dm_ten_danh_muc'] ?></h5>
+                </div>
                 <p class="text-center">
                     <a class="btn btn-success" href="shop.php?id_tl=&id_dm=<?php echo $row_dm['dm_id'] ?>&sort=&trang=1">Xem thêm</a>
                 </p>
@@ -150,6 +152,7 @@
                                     <input type="hidden" name="tensp" value="<?php echo $row['sp_tensp']?>">
                                     <input type="hidden" name="gia" value="<?php echo $row['sp_gia']?>">
                                     <input type="hidden" name="hinh" value="<?php  echo $row['sp_anh_minh_hoa'] ?>">
+                                    <input type="hidden" name="idsp" value="<?php echo $row['sp_id'] ?>">
                                     <input type="hidden" name="soluong" value="1">
 
 

@@ -1,3 +1,12 @@
+<?php 
+
+    // kiểm tra xem người dùng đã đăng nhập chưa
+     session_start();
+     ob_start();
+    
+    
+
+;?> 
 <!DOCTYPE html>
 <html lang="en">
 
