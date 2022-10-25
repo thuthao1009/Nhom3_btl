@@ -1,4 +1,12 @@
+<?php 
 
+    // Mục đích: kiểm tra xem bạn có quyền truy cập trang này hay không thông qua biến $_SESSION['da_dang_nhap'] = 1 --> được phép truy cập; và ngược lại.
+     session_start();
+     ob_start();
+     
+    
+
+;?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,11 +16,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/headicon.ico">
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- css đăng nhập, đăng ký -->
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
     <!-- Load fonts style after rendering the layout styles -->
     <!-- Tải kiểu phông chữ sau khi hiển thị các kiểu bố cục -->
@@ -82,7 +95,10 @@
                 </div>
                <!--  slide ảnh -->
                 <!-- col end -->
+
+                
                 <div class="col-lg-7 mt-5">
+                    
                     <div class="card">
                         <div class="card-body" >
                             <h1 class="h2">&nbsp<?php echo $row['sp_tensp']?></h1>
@@ -92,7 +108,8 @@
                                     <h6>&nbsp&nbsp Người đăng: </h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a href="nguoi_dang.php?id=<?php echo $row['user_id']?>" class=" text-decoration-none" style=" color: black;"><?php echo $row['user_hoten']  ?></a>
+                                    <a href="nguoi_dang.php?id=<?php echo $row['user_id']?>" class=" text-decoration-none" style=" color: black;"><?php echo $row['user_hoten']  ?>
+                                    </a>
                                 </li>
                             </ul>
                             <ul class="list-inline">
@@ -109,7 +126,11 @@
                                     <h6>&nbsp&nbsp Tình trạng:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class=""><strong><?php echo $row['sp_tinh_trang']  ?></strong></p>
+                                    <p class="">
+                                        <strong>
+                                            <?php echo $row['sp_tinh_trang']  ?>
+                                            </strong>
+                                    </p>
                                 </li>
                             </ul>
                             <ul class="list-inline">
@@ -117,7 +138,9 @@
                                     <h6>&nbsp&nbsp Năm xuất bản:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class=""><strong><?php echo $row['sp_namxb']  ?></strong></p>
+                                    <p class="">
+                                        <strong><?php echo $row['sp_namxb']  ?></strong>
+                                    </p>
                                 </li>
                             </ul>
 
@@ -128,12 +151,15 @@
                                     <h6>Còn lại:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class=""><strong><?php echo $row['sp_soluong']  ?></strong></p>
+                                    <p class="">
+                                        <strong><?php echo $row['sp_soluong']  ?></strong>
+                                    </p>
                                 </li>
                             </ul>
-
-                            <form action="" method="GET">
-                                <input type="hidden" name="product-title" value="Activewear">
+                            <form method="POST" action="gio_hang.php">
+                                <input type="hidden" name="tensp" value="<?php echo $row['sp_tensp']?>">
+                                <input type="hidden" name="gia" value="<?php echo $row['sp_gia']?>">
+                                <input  type="hidden" name="hinh" value="<?php  echo $row['sp_anh_minh_hoa'] ?>">
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
@@ -141,25 +167,26 @@
                                                 Số lượng
                                                 <input type="hidden" name="product-quanity" id="product-quanity" value="1">
                                             </li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
-                                            <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                                            <li class="list-inline-item">
+                                                <input  type="number" name="soluong" min="1" max="<?php echo $row['sp_soluong']  ?>" value="1">
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
+                                        <!-- nút mua ngay -->
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Mua ngay</button>
                                     </div>
+                                    <!-- nút thêm vào giỏ hàng -->
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Thêm vào giỏ hàng</button>
+                                        <input type="submit" value="Thêm vào giỏ hàng" class="them_gio_hang btn btn-success btn-lg" name="addcart">
                                     </div>
                                 </div>
                             </form>
-
                         </div>
-                    </div>
-                </div>
+                    </div>              
+                </div>                
             </div>
         </div>
     </section>
@@ -171,7 +198,6 @@
             <div class="row text-left p-2 pb-3">
                 <h4>Sản phẩm liên quan</h4>
             </div>
-
             <!--Start Carousel Wrapper-->
             <div id="carousel-related-product">
                 <?php 
@@ -179,21 +205,45 @@
                     while ($row_lq = mysqli_fetch_array($lien_quan)) {
                         $i++;
                 ;?>
+                
                 <div class="p-2 pb-3">
                     <div class="product-wap card rounded-0">
+                        <form method="POST" action="gio_hang.php" id="myform">
                         <div class="card rounded-0">
                             <img class="card-img rounded-0 img-fluid" src="assets/img/shop_08.jpg">
                             <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                 <ul class="list-unstyled">
-                                    <li><a class="btn btn-success text-white" href="shop-single.php?id=<?php echo $row_lq['sp_id'] ?>"><i class="far fa-heart"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row_lq['sp_id'] ?>"><i class="far fa-eye"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row_lq['sp_id'] ?>"><i class="fas fa-cart-plus"></i></a></li>
+
+                                    <!-- //nút xem thêm -->
+                                    <li>
+                                        <a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row_lq['sp_id'] ?>">
+                                            <i class="far fa-eye"></i>
+                                        </a>
+                                    </li>
+                                    <br>
+
+                                    <!-- //nút add cart -->
+                                    <li>
+                                        <button value="Thêm vào giỏ hàng" name="addcart" class="btn btn-success text-white" type="submit">
+                                            <i class="fas fa-cart-plus"></i>
+                                        </button>
+                                    </li>
+
+                                    <!-- //lấy dữ liệu sản phẩm  -->  
+                                    <input type="hidden" name="tensp" value="<?php echo $row_lq['sp_tensp']?>">
+                                    <input type="hidden" name="gia" value="<?php echo $row_lq['sp_gia']?>">
+                                    <input type="hidden" name="hinh" value="<?php  echo $row_lq['sp_anh_minh_hoa'] ?>">
+                                    <input type="hidden" name="soluong" value="1">
+     
                                 </ul>
+
                             </div>
                         </div>
+                        </form>
                         <div class="card-body">
                             <div class="content hideContent text-decoration-none" style="text-align: center;">
-                                <a href="shop-single.php?id=<?php echo $row_lq['sp_id'] ?>" class="content hideContent text-decoration-none"><?php echo $row_lq['sp_tensp']  ?>
+                                <a href="shop-single.php?id=<?php echo $row_lq['sp_id'] ?>" class="content hideContent text-decoration-none">
+                                    <?php echo $row_lq['sp_tensp']?>
                                 </a>
                             </div>
                             <p class="text-center mb-0"><?php echo $row_lq['sp_gia']?></p>
@@ -204,6 +254,7 @@
                         </div>
                     </div>
                 </div>
+            
 <?php } ?>
             </div>
         </div>
@@ -222,6 +273,18 @@
 
     <!-- Start Slider Script -->
     <script src="assets/js/slick.min.js"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+
+
+
+
     <script>
         $('#carousel-related-product').slick({
             infinite: true,
@@ -284,6 +347,11 @@
             ]
         });
     </script>
+    <script>
+    function submitForm(){
+        document.getElementById('myform').submit();
+    }
+</script>
     <!-- End Slider Script -->
 
 </body>

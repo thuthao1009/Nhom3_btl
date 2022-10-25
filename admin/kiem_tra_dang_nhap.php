@@ -17,6 +17,9 @@
 
 	// Truy vấn đến bảng dữ liệu
 	$user = mysqli_query($con, $sql)->num_rows;
+	$user1 = mysqli_query($con, $sql);
+	$row=mysqli_fetch_array(user1);
+	$user_id=echo $row['user_id'];
 
 	if ($user==1) {
 		session_start();
