@@ -8,7 +8,7 @@
             echo  " 
             <script type = 'text/javascript'>
               window.alert(' Bạn đăng xuất thành công!');
-              window.location.href='dang_nhap.php';
+              window.location.href='../index.php';
             </script>
             ";
         }

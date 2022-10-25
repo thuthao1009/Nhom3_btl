@@ -67,17 +67,39 @@
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+                    <a class="nav-icon nav-item d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="gio_hang.php">
+                    <a class="nav-icon nav-item position-relative text-decoration-none" href="gio_hang.php">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
+                    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <?php  
+                            if(!isset($_SESSION['da_dang_nhap'])) {
+                                echo'<li><a class="dropdown-item" href="admin/dang_nhap.php">Đăng nhập</a></li>
+                                    <li><a class="dropdown-item" href="admin/dang_ky.php">Đăng kí</a></li>
+                                ';        
+                            }
+                            else{
+                                echo'<li><a class="dropdown-item" href="admin/dang_xuat.php">Đăng xuất</a></li>';
+                            }
+
+                        ?>
+
+
+
+                        <!-- <li><a class="dropdown-item" href="admin/dang_nhap.php">Đăng nhập</a></li>
+                        <li><a class="dropdown-item" href="admin/dang_ky.php">Đăng kí</a></li>
+                        <li><a class="dropdown-item" href="dangxuat.php">Đăng xuất</a></li> -->
+                       
+                    </ul>
+                </li>
+            </ul>
+                   
                 </div>
             </div>
 
