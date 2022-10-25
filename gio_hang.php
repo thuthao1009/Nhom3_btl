@@ -12,6 +12,8 @@
   }
 ;?>
 <?php
+
+     require('thu_vien.php');
      // echo $_POST['addcart']; exit();
      if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=[]; 
      //kiểm tra xem 
@@ -23,14 +25,14 @@
       if(isset($_GET['delid'])&&($_GET['delid']>=0)){
         array_splice($_SESSION['giohang'],$_GET['delid'],1);
       }
-     //lấy duex liệu từ form
+     //lấy dữ liệu từ form
      if(isset($_POST['addcart']) && ($_POST['addcart'])){
         $hinh=$_POST['hinh'] ;
         $ten=$_POST['tensp'];
         $gia=$_POST['gia'];
         $soluong=$_POST['soluong'];
+        $sp_id=$_POST['idsp'];
         // echo $hinh, $ten, $gia, $soluong; exit();
-        
 
         // kiểm tra sản phẩm có trong giỏ hàng k
 
@@ -38,7 +40,7 @@
 
 
         for ($i=0; $i < sizeof($_SESSION['giohang']) ; $i++) { 
-          if ($_SESSION['giohang'][$i][1]==$ten) {
+          if ($_SESSION['giohang'][$i][4]==$sp_id) {
 
             $fl=1;
             $soluongnew=$soluong+$_SESSION['giohang'][$i][3];
@@ -47,48 +49,18 @@
             break;
           }
         }
-        // nếu không trùng san rphaamr trong giỏ thì thêm mới
+        // nếu không trùng sản phẩm trong giỏ thì thêm mới
         if($fl==0){
 
-          //thêm mới sp vào giỏ hàng
-        $sp=[$hinh,$ten,$gia,$soluong];
+        //thêm mới sản phẩm vào giỏ hàng
+        $sp=[$hinh,$ten,$gia,$soluong,$sp_id];
         $_SESSION['giohang'][]=$sp;
         // var_dump($_SESSION['giohang']); exit();
 
         }
-
         
      } 
-
-
-
-     function showgiohang(){
-      if(isset($_SESSION['giohang']) && (is_array($_SESSION['giohang']))){
-        $tong=0;
-        for ($i=0; $i < sizeof($_SESSION['giohang']); $i++) { 
-          $tt=$_SESSION['giohang'][$i][2] * $_SESSION['giohang'][$i][3];
-          $tong+=$tt;
-          echo '<tr style="vertical-align: middle;">
-                  
-                  <td class="text-center" >'.($i+1).'</td>
-                  <td class="text-center"><img style="width: 100px; height: 100px;" src="assets/img/'.$_SESSION['giohang'][$i][0].'" ></td>
-                  <!-- mô tả sản phẩm -->
-                  <td>'.$_SESSION['giohang'][$i][1].'</td>
-                 <!--  giá -->
-                  <td class="text-center">'.$_SESSION['giohang'][$i][2].'</td>
-                  <td class="text-center">'.$_SESSION['giohang'][$i][3].'</td>
-                  <!-- đơn giá -->
-                  <td class="text-center">'.$tt.'</td>
-
-                  <td class="text-center"><a href="gio_hang.php?delid='.$i.'" class="btn btn-success" >x</a></td>
-                </tr>';
-        }
-        echo ' <tr>
-                  <td colspan="5" class="alignR">Tổng </td>
-                  <td class="label label-primary text-center "> '.$tong.'</td>
-                </tr>';
-      }
-     }
+     
 ?>
 
 <!DOCTYPE html>
@@ -139,18 +111,15 @@ Navigation Bar Section
 Body Section 
 -->
   <div class="row">
-  <div class="span12">
-    <ul class="list-inline text-center">
-      <br>
-    <li class="list-inline-item"><a href="index.php">Trang chủ</a> <span class="divider">/</span></li>
-    <li class="active list-inline-item">Giỏ hàng</li>
-    </ul>
-  <div class="well well-small">
-  
-  <hr class="soften"/>  
+    <div class="span12">
+      <br/>
+      <h1 class="h1 text-center">Giỏ hàng</h1>
 
-  <table class="table table-bordered table-condensed">
-              <thead>
+      <form action="thanh_toan.php" method="">
+        <div class="well well-small">
+          <hr class="soften"/>  
+          <table class="table table-bordered table-condensed">
+            <thead>
                 <!-- tiêu dề bảng -->
                 <tr class="text-center" style="vertical-align: middle;">
                   <th>STT</th>
@@ -161,18 +130,28 @@ Body Section
                   <th>Đơn giá</th>
                   
                 </tr>
-              </thead>
-              <tbody>
+            </thead>
+            <tbody>
+
                 <?php showgiohang(); ?>
 
-        </tbody>
-            </table><br/>
+            </tbody>
+            </table>
+
     
     
       <!-- nút mua tiếp  -->
-  <a href="shop.php" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Tiếp tục mua </a>
-  <a href="gio_hang.php?delcart=1" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Xóa giỏ hàng </a>
-  <a href="thanh_toan.php" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Thanh toán </a>
+      <br>
+      <div class="text-center">
+            <a href="shop.php" class=" btn btn-success btn-lg"><span class="icon-arrow-left"></span> Tiếp tục mua   </a>
+            <input type="submit" name="dongydathang" value="Thanh toán" class="btn btn-success btn-lg">
+            <a href="gio_hang.php?delcart=1" class=" btn btn-success btn-lg"><span class="icon-arrow-left"></span> Xóa giỏ hàng   </a>
+            
+      </div>
+  
+  </div>
+
+    </form>
 
 
 </div>

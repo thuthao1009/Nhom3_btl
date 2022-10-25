@@ -52,21 +52,22 @@
     $sql = "SELECT * FROM `sanpham` JOIN theloai ON sanpham.tl_id=theloai.tl_id JOIN user ON user.user_id=sanpham.user_id JOIN danhmucsp ON `danhmucsp`.`dm_id`=  `sanpham`.`dm_id`   WHERE sanpham.sp_id=".$id;
     $san_pham=mysqli_query($con,$sql);
     $row=mysqli_fetch_array($san_pham);
+
     $sql_lq ="SELECT * FROM sanpham WHERE sp_id<>'".$id."' AND tl_id LIKE (SELECT tl_id FROM sanpham WHERE sp_id='".$id."') ORDER BY `sanpham`.`created_at` DESC ";
         // echo $sql_lq; exit();
     $lien_quan=mysqli_query($con,$sql_lq);
+
     $sql_anh="SELECT * FROM `thumucanh` WHERE sp_id='".$id."' ORDER BY `thumucanh`.`tma_id` ASC ";
     $anh=mysqli_query($con,$sql_anh);
     $row_anh=mysqli_fetch_array($anh);
+
     $sql_sl_anh="SELECT COUNT(*) FROM `thumucanh` WHERE sp_id='".$id."' ORDER BY `thumucanh`.`tma_id` ASC ";
     $sl_anh=mysqli_query($con,$sql_sl_anh);
     $row_sl_anh=mysqli_fetch_array($sl_anh);
+
     ?>
 
-    <!-- Start Article -->
- <!-- Start Article -->
  
-    <!-- End Article -->
 
     <!-- Open Content -->
     <section class="bg-light">
@@ -93,7 +94,7 @@
                             </div>
                         </div>
                 </div>
-               <!--  slide ảnh -->
+               <!-- hết slide ảnh -->
                 <!-- col end -->
 
                 
@@ -107,15 +108,19 @@
                                 <li class="list-inline-item">
                                     <h6>&nbsp&nbsp Người đăng: </h6>
                                 </li>
+
                                 <li class="list-inline-item">
                                     <a href="nguoi_dang.php?id=<?php echo $row['user_id']?>" class=" text-decoration-none" style=" color: black;"><?php echo $row['user_hoten']  ?>
                                     </a>
                                 </li>
+
                             </ul>
                             <ul class="list-inline">
+
                                 <li class="list-inline-item">
                                     <h6>&nbsp&nbsp Môn học:</h6>
                                 </li>
+
                                 <li class="list-inline-item">
                                     <p class=""><?php echo $row['tl_ten_tl']  ?></p>
                                 </li>
@@ -125,11 +130,10 @@
                                 <li class="list-inline-item">
                                     <h6>&nbsp&nbsp Tình trạng:</h6>
                                 </li>
+
                                 <li class="list-inline-item">
                                     <p class="">
-                                        <strong>
-                                            <?php echo $row['sp_tinh_trang']  ?>
-                                            </strong>
+                                        <strong><?php echo $row['sp_tinh_trang']  ?></strong>
                                     </p>
                                 </li>
                             </ul>
@@ -159,7 +163,9 @@
                             <form method="POST" action="gio_hang.php">
                                 <input type="hidden" name="tensp" value="<?php echo $row['sp_tensp']?>">
                                 <input type="hidden" name="gia" value="<?php echo $row['sp_gia']?>">
-                                <input  type="hidden" name="hinh" value="<?php  echo $row['sp_anh_minh_hoa'] ?>">
+                                <input type="hidden" name="hinh" value="<?php  echo $row['sp_anh_minh_hoa'] ?>">
+                                <input type="hidden" name="idsp" value="<?php  echo $row['sp_id'] ?>">
+                                
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
@@ -175,8 +181,8 @@
                                 </div>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <!-- nút mua ngay -->
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Mua ngay</button>
+                                        
+                                        <input type="submit" value="Mua ngay" class="them_gio_hang btn btn-success btn-lg" name="addcart">
                                     </div>
                                     <!-- nút thêm vào giỏ hàng -->
                                     <div class="col d-grid">
@@ -233,6 +239,7 @@
                                     <input type="hidden" name="tensp" value="<?php echo $row_lq['sp_tensp']?>">
                                     <input type="hidden" name="gia" value="<?php echo $row_lq['sp_gia']?>">
                                     <input type="hidden" name="hinh" value="<?php  echo $row_lq['sp_anh_minh_hoa'] ?>">
+                                    <input type="hidden" name="idsp" value="<?php  echo $row_lq['sp_id'] ?>">
                                     <input type="hidden" name="soluong" value="1">
      
                                 </ul>

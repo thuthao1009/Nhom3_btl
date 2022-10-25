@@ -1,9 +1,17 @@
+<?php 
 
+    // kiểm tra xem người dùng đã đăng nhập chưa
+     session_start();
+     ob_start();
+    
+    
+
+;?> 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>LazaBA - Tin tức liên quan  </title>
+    <title>BAbook - Tin tức liên quan  </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,7 +38,11 @@ https://templatemo.com/tm-559-zay-shop
 </head>
 
 <body>
-    <?php require('menu.php') ?>
+    <?php 
+    require('config.php');
+    require('menu.php');
+    ?>
+
 
     <!-- Start Content Page -->
     <div class="container-fluid bg-light py-5">
@@ -78,7 +90,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">LazaBA</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">BAbook</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -157,7 +169,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2022  Company Name 
-                            | Designed by <a rel="sponsored" href="https://LazaBA.com" target="_blank">LazaBA</a>
+                            | Designed by <a rel="sponsored" href="https://BAbook.com" target="_blank">BAbook</a>
                         </p>
                     </div>
                 </div>

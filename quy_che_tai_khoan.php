@@ -1,8 +1,17 @@
+<?php 
+
+    // kiểm tra xem người dùng đã đăng nhập chưa
+     session_start();
+     ob_start();
+    
+    
+
+;?> 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>LazaBA - Quy chế tài khoản  </title>
+    <title>BAbook - Quy chế tài khoản  </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,7 +38,11 @@ https://templatemo.com/tm-559-zay-shop
 </head>
 
 <body>
-    <?php require('menu.php'); ?>
+    <?php 
+    require('config.php');
+    require('menu.php');
+    ?>
+
 
 
     <!-- Start Content Page -->
@@ -43,46 +56,46 @@ https://templatemo.com/tm-559-zay-shop
     </div>
 
  
-    <h2>1.Đăng ký tài khoản trên website LazaBA  </h2>
+    <h5>1.Đăng ký tài khoản trên website BAbook  </h5>
     <ul>
-        <li> Để sử dụng một số tính năng của LazaBA, bạn phải tạo Tài khoản trên website (Đăng ký tài khoản)
+        <li> Để sử dụng một số tính năng của BAbook, bạn phải tạo Tài khoản trên website (Đăng ký tài khoản)
 
         <ol>
         <li> Khi tạo Tài khoản bạn phải đồng ý cung cấp một cách chính xác và đầy đủ thông tin được yêu cầu (Dữ liệu tài khoản).</li>
-        <li> Nếu bạn cung cấp thông tin của bất kỳ bên thứ ba nào cho LazaBA, chúng tôi có quyền tin rằng bạn đã đạt được sự thỏa thuận cần thiết từ bên thứ ba đó để chia sẻ và chuyển giao thông tin của họ cho chúng tôi.</li>
+        <li> Nếu bạn cung cấp thông tin của bất kỳ bên thứ ba nào cho BAbook, chúng tôi có quyền tin rằng bạn đã đạt được sự thỏa thuận cần thiết từ bên thứ ba đó để chia sẻ và chuyển giao thông tin của họ cho chúng tôi.</li>
     </ol>
 
 
     </ul>
 
-    <h2> 2.Bảo vệ tài khoản </h2>
+    <h5> 2.Bảo vệ tài khoản </h5>
     <ul>
         
         <li> Để sử dụng và bảo vệ Tài khoản, bạn phải cung cấp một số điện thoại và Mật khẩu (Dữ liệu đăng ký) để bảo vệ tài khoản. </li>
-        <li> Bạn phải có trách nhiệm bảo vệ và giữ bí mật Mật khẩu này, LazaBA không có bất kỳ trách nhiệm liên quan đến và/hoặc phát sinh từ việc Mật khẩu của bạn bị mất mát và/hoặc bên thứ ba nào khác biết đến Mật khẩu của bạn.</li>
+        <li> Bạn phải có trách nhiệm bảo vệ và giữ bí mật Mật khẩu này, BAbook không có bất kỳ trách nhiệm liên quan đến và/hoặc phát sinh từ việc Mật khẩu của bạn bị mất mát và/hoặc bên thứ ba nào khác biết đến Mật khẩu của bạn.</li>
         <li>Hành vi sử dụng dữ liệu đăng ký của người khác mà không được thực hiện dưới sự đồng ý hoặc khi có sự quan sát của người sở hữu Tài khoản được coi là trái phép.</li>
         <li>Nếu bạn chia sẻ tài khoản của mình đối với bất kỳ bên nào khác thì bạn sẽ tự chịu mọi trách nhiệm về tất cả các hành động được thực hiện và hậu quả dưới tên Tài khoản của Bạn, chúng tôi sẽ không chịu bất kỳ trách nhiệm nào phát sinh từ hành động của bạn.</li>
         <li>Chợ Tốt sẽ không chịu trách nhiệm về thiệt hại bạn gây ra do việc sử dụng trái phép tài khoản của người khác, bạn có thể phải chịu trách nhiệm cho những thiệt hại của Chợ Tốt hoặc của những người khác nếu sử dụng trái phép Tài khoản.</li>
         <li>Bạn sẽ thông báo ngay lập tức cho Chợ Tốt nếu phát hiện hoặc nghi ngờ việc có người truy cập trái phép, lạm dụng, vi phạm bảo mật vào Dữ liệu tài khoản hoặc Dữ liệu đăng ký của bạn.</li>
     </ul>
 
-<h2>3. Chấm dứt hoạt động của tài khoản</h2>
+<h5>3. Chấm dứt hoạt động của tài khoản</h5>
 <ul>
-    <li>Trường hợp LazaBA chấm dứt Tài khoản của bạn</li>
+    <li>Trường hợp BAbook chấm dứt Tài khoản của bạn</li>
 
 <ol>
-        <li>LazaBA bảo lưu quyền chấm dứt vĩnh viễn hoặc chấm dứt tạm thời hoạt động của Tài khoản nếu bạn được xác định đã vi phạm Quy chế hoặc có những hành vi ảnh hưởng đến hoạt động của LazaBA, bạn sẽ được thông báo trước 05 (năm) ngày về việc Tài khoản bị chấm dứt hoặc tạm ngưng theo quy định của LazaBA.  </li>
-        <li>LazaBA có quyền quyết định Tài khoản đó có vi phạm Quy chế hoặc có hành vi ảnh hưởng đến hoạt động của LazaBA hay không dựa trên những quy định mà chúng tôi đã công khai website hoặc khi có căn cứ cho rằng Tài khoản đó có hành vi vi phạm pháp luật. Thời điểm chấm dứt Tài khoản là khi LazaBA gửi email cho bạn về việc chấm dứt Tài khoản. </li> </ol>
+        <li>BAbook bảo lưu quyền chấm dứt vĩnh viễn hoặc chấm dứt tạm thời hoạt động của Tài khoản nếu bạn được xác định đã vi phạm Quy chế hoặc có những hành vi ảnh hưởng đến hoạt động của BAbook, bạn sẽ được thông báo trước 05 (năm) ngày về việc Tài khoản bị chấm dứt hoặc tạm ngưng theo quy định của BAbook.  </li>
+        <li>BAbook có quyền quyết định Tài khoản đó có vi phạm Quy chế hoặc có hành vi ảnh hưởng đến hoạt động của BAbook hay không dựa trên những quy định mà chúng tôi đã công khai website hoặc khi có căn cứ cho rằng Tài khoản đó có hành vi vi phạm pháp luật. Thời điểm chấm dứt Tài khoản là khi BAbook gửi email cho bạn về việc chấm dứt Tài khoản. </li> </ol>
     <li>Trường hợp bạn muốn chấm dứt Tài khoản: Bạn có thể yêu cầu chấm dứt Tài khoản bằng cách sử dụng công cụ trực tuyến </li>
 
 </ul>
-<h2>3. Quy định khác</h2>
+<h5>4. Quy định khác</h5>
 <ul>
     <li>Bạn có thể thay đổi Dữ liệu tài khoản bất kỳ lúc nào bằng cách truy cập trang Thông tin cá nhân.</li>
     <li>Việc yêu cầu, sử dụng, bảo vệ dữ liệu được quy định cụ thể trong Quy chế riêng tư.</li>
 
 </ul>
- <h2>4. Riêng tư và bảo vệ thông tin cá nhân</h2>
+ <h5>5. Riêng tư và bảo vệ thông tin cá nhân</h5>
  <ul>
     <li>Thông tin cá nhân của bạn sẽ được bảo vệ theo các điều khoản của Quy chế riêng tư.</li></ul>
           
@@ -102,7 +115,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">LazaBA</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">BAbook</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -181,7 +194,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2022  Company Name 
-                            | Designed by <a rel="sponsored" href="https://LazaBA.com" target="_blank">LazaBA</a>
+                            | Designed by <a rel="sponsored" href="https://BAbook.com" target="_blank">BAbook</a>
                         </p>
                     </div>
                 </div>
