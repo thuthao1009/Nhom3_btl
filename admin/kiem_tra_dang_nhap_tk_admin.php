@@ -16,11 +16,14 @@
 	require('../config.php');
 
 	// Truy vấn đến bảng dữ liệu
-	$admin = mysqli_query($con, $sql)->num_rows;
+	$admin = mysqli_query($con, $sql);
+	$so_luong = mysqli_num_rows($admin);
+	$row = mysqli_fetch_array($admin);
 
-	if ($admin==1) {
+	if ($so_luong==1) {
 		session_start();
 		$_SESSION['da_dang_nhap']=1;
+		$_SESSION['ten_dang_nhap'] = $row["ad_hoten"]
 ;?>
 	<script type="text/javascript">
 		window.alert("Bạn đã đăng nhập thành công!");
