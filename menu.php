@@ -85,6 +85,7 @@
                                 ';        
                             }
                             else{
+                                echo'<li><a class="dropdown-item" href="them_moi_sp.php">Đăng bán tài liệu</a></li>';
                                 echo'<li><a class="dropdown-item" href="admin/dang_xuat.php">Đăng xuất</a></li>';
                             }
 

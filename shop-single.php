@@ -102,8 +102,11 @@
                     
                     <div class="card">
                         <div class="card-body" >
+                            <!-- tên sản phẩm -->
                             <h1 class="h2">&nbsp<?php echo $row['sp_tensp']?></h1>
+                            <!-- giá -->
                             <p class="h3 py-2">&nbsp<?php echo $row['sp_gia']?></p>
+                            <!-- người đăng -->
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>&nbsp&nbsp Người đăng: </h6>
@@ -115,6 +118,7 @@
                                 </li>
 
                             </ul>
+                            <!-- môn hoc -->
                             <ul class="list-inline">
 
                                 <li class="list-inline-item">
@@ -165,6 +169,7 @@
                                 <input type="hidden" name="gia" value="<?php echo $row['sp_gia']?>">
                                 <input type="hidden" name="hinh" value="<?php  echo $row['sp_anh_minh_hoa'] ?>">
                                 <input type="hidden" name="idsp" value="<?php  echo $row['sp_id'] ?>">
+                                <input type="hidden" name="nguoi_ban" value="<?php  echo $row['user_id'] ?>">
                                 
                                 <div class="row">
                                     <div class="col-auto">
@@ -241,6 +246,7 @@
                                     <input type="hidden" name="hinh" value="<?php  echo $row_lq['sp_anh_minh_hoa'] ?>">
                                     <input type="hidden" name="idsp" value="<?php  echo $row_lq['sp_id'] ?>">
                                     <input type="hidden" name="soluong" value="1">
+                                    <input type="hidden" name="nguoi_ban" value="<?php  echo $row_lq['user_id'] ?>">
      
                                 </ul>
 

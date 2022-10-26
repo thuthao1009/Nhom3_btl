@@ -117,7 +117,6 @@
             <!-- giới thiệu hàng sản phẩm nổi bật -->
 
             <!-- sản phẩm nổi bật -->
-          
 
             <div class="row  carousel-related-product">
                 <?php 
@@ -132,34 +131,25 @@
                                     <img class="card-img rounded-0 img-fluid" src="assets/img/<?php echo $row['sp_anh_minh_hoa'] ?>" style="height: 250px;" >
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-
-
                                         <li>
                                         <a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row['sp_id'] ?>">
                                             <i class="far fa-eye"></i>
                                         </a>
                                     </li>
                                     <br>
-
                                     <!-- //nút add cart -->
                                     <li>
                                         <button value="Thêm vào giỏ hàng" name="addcart" class="btn btn-success text-white" type="submit">
                                             <i class="fas fa-cart-plus"></i>
                                         </button>
                                     </li>
-
                                     <!-- //lấy dữ liệu sản phẩm  -->  
                                     <input type="hidden" name="tensp" value="<?php echo $row['sp_tensp']?>">
                                     <input type="hidden" name="gia" value="<?php echo $row['sp_gia']?>">
                                     <input type="hidden" name="hinh" value="<?php  echo $row['sp_anh_minh_hoa'] ?>">
                                     <input type="hidden" name="idsp" value="<?php echo $row['sp_id'] ?>">
                                     <input type="hidden" name="soluong" value="1">
-
-
-
-
-
-                                        
+                                    <input type="hidden" name="nguoi_ban" value="<?php  echo $row['user_id'] ?>">
                                     </ul>
                                 </div>
                             </div>

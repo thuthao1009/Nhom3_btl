@@ -11,7 +11,7 @@
 	";
 	// echo $sql; exit();
 
-	
+
 	// Kết nối đến CSDL
 	require('../config.php');
 
@@ -19,7 +19,6 @@
 	$user = mysqli_query($con, $sql);
 	$so_luong = mysqli_num_rows($user);
 	$row = mysqli_fetch_array($user);
-
 
 	if ($so_luong==1) {
 		session_start();

@@ -29,6 +29,7 @@
                                                 <input class="form-control" id="txtEmail" name= "txtEmail" type="email" placeholder="name@example.com" />
                                                 <label for="txtEmail">Email</label>
                                             </div>
+                                            
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">

@@ -146,8 +146,7 @@
     
       <!-- nút mua tiếp  -->
   <a href="shop.php" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Tiếp tục mua </a>
-  <a href="gio_hang.php?delcart=1" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Xóa giỏ hàng </a>
-  <a href="thanh_toan.php" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Thanh toán </a>
+  
 
 
 </div>
