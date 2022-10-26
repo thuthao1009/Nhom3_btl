@@ -32,12 +32,12 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
-     <!--       <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
+                  <div class="form-control"><?php  echo $_SESSION['ten_dang_nhap'];?>  </div>                 
+                </div> 
             </form>
+            
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
@@ -65,15 +65,7 @@
                             <a class="nav-link collapsed" href="quan_tri_tai_khoan.php" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Quản trị tài khoản
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                 <a class="nav-link" href="nguoidung.php"> Người dùng</a>   
-                                    <a class="nav-link" href="dangky.php">  Đăng Ký</a>
-                                    <a class="nav-link" href="dangxuat.php">Đăng Xuất</a>
-                            </nav>
-                            </div>
+                                
 
                             <!--Quản trị sản phẩm-->
                             <a class="nav-link collapsed" href="quan_tri_san_pham.php" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -131,14 +123,16 @@
                                         <tr>
                                             <th style="text-align:center;">STT</th>
                                             <th style="text-align:center;">Tên danh mục</th>
+                                            <th style="text-align:center;">Ảnh minh họa</th>
                                             <th style="text-align:center;">Sửa</th>
                                             <th style="text-align:center;">Xóa</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>STT</th>
+                                            <th>STT</th>
                                             <th style="text-align:center;">Tên danh mục</th>
+                                            <th style="text-align:center;">Ảnh minh họa</th>
                                             <th style="text-align:center;">Sửa</th>
                                             <th style="text-align:center;">Xóa</th>
                                         </tr>
@@ -164,6 +158,7 @@
                                         <tr>
                                             <td style="text-align:center;"><?php echo $i;?></td>
                                             <td style="text-align:center;"><?php echo $row["dm_ten_danh_muc"];?></td>
+                                            <td style="text-align: center;"><img src="../img/<?php echo $row['dm_anh_minh_hoa'] ?>" width="50" height="30" /></td>
                                             <td style="text-align: center;"><a href="../admin/sua_danh_muc.php?id=<?php echo $row["dm_id"];?>"><img src= "../img/edit.png" style="width: 30px; height: auto;"></a></td>
 
                                             <td style="text-align: center;"><a href="../admin/xoa_danh_muc.php?id=<?php echo $row["dm_id"];?>"><img src= "../img/delete.png" style="width: 30px; height: auto;"></a></td>

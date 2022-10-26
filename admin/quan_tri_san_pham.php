@@ -1,5 +1,5 @@
 <?php 
-/*
+
     // Mục đích: kiểm tra xem bạn có quyền truy cập trang này hay không thông qua biến $_SESSION['da_dang_nhap'] = 1 --> được phép truy cập; và ngược lại.
      session_start();
      ob_start();
@@ -10,7 +10,7 @@
                 window.location.href='dang_nhap.php';
             </script>
         ";
-    }*/
+    }
 ;?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,15 +65,7 @@
                             <a class="nav-link collapsed" href="quan_tri_tai_khoan.php" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Quản trị tài khoản
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                 <a class="nav-link" href="nguoidung.php"> Người dùng</a>   
-                                    <a class="nav-link" href="dangky.php">  Đăng Ký</a>
-                                    <a class="nav-link" href="dangxuat.php">Đăng Xuất</a>
-                            </nav>
-                            </div>
+                                
 
                             <!--Quản trị sản phẩm-->
                             <a class="nav-link collapsed" href="quan_tri_san_pham.php" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
