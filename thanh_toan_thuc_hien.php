@@ -9,11 +9,14 @@
             $sdt = $_POST['txtSDT'];
             $dia_chi = $_POST['txtDiachi'];
             $ghi_chu=$_POST['txtghichu'];
+            $user_id=$_SESSION['user_id'];
+            $nguoi_ban=$_SESSION['giohang'][0][5] ;
 
-            // lấy ra id khách hàng
-            $sql= "SELECT * FROM `user` WHERE email='".$email."'";
-            $user_id=mysqli_query($con,$sql);
-            $row=mysqli_fetch_array($user_id);
+
+            // // lấy ra id khách hàng
+            // $sql= "SELECT * FROM `user` WHERE email='".$email."'";
+            // $user_id=mysqli_query($con,$sql);
+            // $row=mysqli_fetch_array($user_id);
 ;?>
 
 <?php  
@@ -22,7 +25,8 @@
         
             //Câu lệnh INSERT
     
-             $sql=" INSERT INTO `hoadon` (`hd_id`, `user_id_m`, `hd_ghi_chu`, `hd_ngay_dat_hang`, `hd_status`, `dia_chi`) VALUES (NULL, '".$row['user_id']."', '".$ghi_chu."', current_timestamp(), '1', '".$dia_chi."');"; 
+             $sql=" INSERT INTO `hoadon` (`hd_id`, `user_id_m`, `hd_ghi_chu`, `hd_ngay_dat_hang`, `hd_status`, `dia_chi`, `user_id_b`) VALUES (NULL, '".$user_id."', '".$ghi_chu."', current_timestamp(), '1', '".$dia_chi."', '".$nguoi_ban."')"; 
+                // echo $sql; exit();
             // echo $sql; exit();
             // 3. Thực thi câu lệnh lấy dữ liệu mong muốn
             $dat_hang = mysqli_query($con, $sql);
@@ -44,9 +48,13 @@
                 $gia=$_SESSION['giohang'][$i][2] ;
                 $soluong=$_SESSION['giohang'][$i][3] ;
                 $sp_id=$_SESSION['giohang'][$i][4] ;
+                
+
                 $thanh_tien=$gia*$soluong;
 
                 $sql=" INSERT INTO `hoadonchitiet` (`hd_id`, `sp_id`, `gia`, `cthd_soluong`, `cthd_tongtien`) VALUES ('".$row['hd_id']."', '".$sp_id."', '".$gia."', '".$soluong."', '".$thanh_tien."');";
+
+                    // echo $sql; exit();
                $dat_hang_ct = mysqli_query($con, $sql);
 
                      

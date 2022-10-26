@@ -11,11 +11,15 @@
 <?php
   }
 ;?>
+
 <?php
 
      require('thu_vien.php');
      // echo $_POST['addcart']; exit();
+
+     
      if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=[]; 
+     
      //kiểm tra xem 
      
      
@@ -32,32 +36,81 @@
         $gia=$_POST['gia'];
         $soluong=$_POST['soluong'];
         $sp_id=$_POST['idsp'];
+        $nguoi_ban=$_POST['nguoi_ban'];
+
+        // var_dump($_SESSION['giohang']); exit();
         // echo $hinh, $ten, $gia, $soluong; exit();
+        // kiểm tra xem có trùng người bán k
+        if ($_SESSION['giohang']==[]) {
+          $sp=[$hinh,$ten,$gia,$soluong,$sp_id,$nguoi_ban];
+          $_SESSION['giohang'][]=$sp;
+        }else{
+          for ($i=0; $i < sizeof($_SESSION['giohang']) ; $i++){
+            if ($_SESSION['giohang'][$i][5] ==$nguoi_ban) {
+              $fl=0;// kiểm tra sp có trùng trong giỏ hàng không
+                for ($i=0; $i < sizeof($_SESSION['giohang']) ; $i++) { 
+                  if ($_SESSION['giohang'][$i][4]==$sp_id) {
+                      $fl=1;
+                      $soluongnew=$soluong+$_SESSION['giohang'][$i][3];
+                      $_SESSION['giohang'][$i][3]=$soluongnew;
+                      break;
+                  }
+                }
+                // nếu không trùng sản phẩm trong giỏ thì thêm mới
+                if($fl==0){
+                  //thêm mới sản phẩm vào giỏ hàng
+                  $sp=[$hinh,$ten,$gia,$soluong,$sp_id,$nguoi_ban];
+                  $_SESSION['giohang'][]=$sp;
+                  // var_dump($_SESSION['giohang']); exit();
+                }
+            }
+            else{
+              ?>
+              <script type="text/javascript">
+                if (confirm("Bạn đang chọn sản phẩm từ 2 người bán khác nhau! Bạn có muốn xóa sản phẩm của giỏ hàng cũ để thêm sản phẩm mới vào không?") == true) {
+                  <?php 
+                    unset($_SESSION['giohang']);
+                    $sp=[$hinh,$ten,$gia,$soluong,$sp_id,$nguoi_ban];
+                    $_SESSION['giohang'][]=$sp;
+                  ?>
 
-        // kiểm tra sản phẩm có trong giỏ hàng k
-
-        $fl=0;// kiểm tra sp có trùng trong giỏ hàng không
-
-
-        for ($i=0; $i < sizeof($_SESSION['giohang']) ; $i++) { 
-          if ($_SESSION['giohang'][$i][4]==$sp_id) {
-
-            $fl=1;
-            $soluongnew=$soluong+$_SESSION['giohang'][$i][3];
-
-            $_SESSION['giohang'][$i][3]=$soluongnew;
-            break;
+                }else{
+                  <?php  ?>
+                }
+                
+              </script>
+              <?php 
+            }
           }
         }
-        // nếu không trùng sản phẩm trong giỏ thì thêm mới
-        if($fl==0){
 
-        //thêm mới sản phẩm vào giỏ hàng
-        $sp=[$hinh,$ten,$gia,$soluong,$sp_id];
-        $_SESSION['giohang'][]=$sp;
-        // var_dump($_SESSION['giohang']); exit();
+        // for ($i=0; $i < sizeof($_SESSION['giohang']) ; $i++) { 
+        //   if ($_SESSION['giohang'][$i][5] !=$nguoi_ban) {
+        //     echo $_SESSION['giohang'][$i][5]; exit();
+        //     echo "khác"; exit();
+            
+        //   }
+        // }
 
-        }
+
+
+        // // kiểm tra sản phẩm có trong giỏ hàng k
+        // $fl=0;// kiểm tra sp có trùng trong giỏ hàng không
+        // for ($i=0; $i < sizeof($_SESSION['giohang']) ; $i++) { 
+        //   if ($_SESSION['giohang'][$i][4]==$sp_id) {
+        //     $fl=1;
+        //     $soluongnew=$soluong+$_SESSION['giohang'][$i][3];
+        //     $_SESSION['giohang'][$i][3]=$soluongnew;
+        //     break;
+        //   }
+        // }
+        // // nếu không trùng sản phẩm trong giỏ thì thêm mới
+        // if($fl==0){
+        //   //thêm mới sản phẩm vào giỏ hàng
+        //   $sp=[$hinh,$ten,$gia,$soluong,$sp_id,$nguoi_ban];
+        //   $_SESSION['giohang'][]=$sp;
+        //   // var_dump($_SESSION['giohang']); exit();
+        // }
         
      } 
      

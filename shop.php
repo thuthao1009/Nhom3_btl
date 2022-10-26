@@ -3,6 +3,7 @@
     // kiểm tra xem người dùng đã đăng nhập chưa
      session_start();
      ob_start();
+
     
     
 
@@ -40,6 +41,10 @@ https://templatemo.com/tm-559-zay-shop
     <?php 
     require('config.php');
     require('menu.php');
+    
+    
+
+
     $keyword = isset($_GET['keyword'])? $_GET['keyword'] : '';
     $tl = isset($_GET['id_tl'])? $_GET['id_tl'] : '';
     $dm = isset($_GET['id_dm'])? $_GET['id_dm'] : '';
@@ -196,6 +201,7 @@ https://templatemo.com/tm-559-zay-shop
                                     <input type="hidden" name="hinh" value="<?php echo $row['sp_anh_minh_hoa'] ?>">
                                     <input type="hidden" name="idsp" value="<?php echo $row['sp_id'] ?>">
                                     <input type="hidden" name="soluong" value="1">
+                                    <input type="hidden" name="nguoi_ban" value="<?php  echo $row['user_id'] ?>">
 
                                         
                                     </ul>

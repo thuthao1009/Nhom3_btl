@@ -11,16 +11,20 @@
 	";
 	// echo $sql; exit();
 
-	
+
 	// Kết nối đến CSDL
 	require('../config.php');
 
 	// Truy vấn đến bảng dữ liệu
-	$user = mysqli_query($con, $sql)->num_rows;
+	$user = mysqli_query($con, $sql);
+	$so_luong = mysqli_num_rows($user);
+	$row = mysqli_fetch_array($user);
 
-	if ($user==1) {
+
+	if ($so_luong==1) {
 		session_start();
 		$_SESSION['da_dang_nhap']=1;
+		$_SESSION['user_id'] = $row["user_id"];	
 ;?>
 	<script type="text/javascript">
 		window.alert("Bạn đã đăng nhập thành công!");
