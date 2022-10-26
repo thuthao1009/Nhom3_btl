@@ -145,7 +145,13 @@
                                                 <input class="form-control" id="txtTenDanhMuc" type="text" placeholder="Tên danh mục" name="txtTenDanhMuc" value=
                                                 "<?php echo $row["dm_ten_danh_muc"];?>"/>
                                                 <label for="txtTenDanhMuc">Tên Danh Mục</label>
-                                            </div>                                                                                    
+                                            </div> 
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="txtAnhMinhHoa" type="file" placeholder="" name="txtAnhMinhHoa" value=
+                                                "<?php echo $row["dm_anh_minh_hoa"];?>"/>
+                                                <label for="txtAnhMinhHoa">Ảnh minh họa</label>
+                                            </div>    
+
                                             <div class="mt-4 mb-0">                                           
                                                 <input type="hidden" name="txtID" value="<?php echo $row["dm_id"] ;?>">
                                                 <input type="submit" name="btnSubmit" value="Cập nhật">
